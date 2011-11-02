@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class PasswordPolicyRelLocalServiceWrapper
-	implements PasswordPolicyRelLocalService {
+	implements PasswordPolicyRelLocalService,
+		ServiceWrapper<PasswordPolicyRelLocalService> {
 	public PasswordPolicyRelLocalServiceWrapper(
 		PasswordPolicyRelLocalService passwordPolicyRelLocalService) {
 		_passwordPolicyRelLocalService = passwordPolicyRelLocalService;
@@ -149,6 +150,12 @@ public class PasswordPolicyRelLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _passwordPolicyRelLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.PasswordPolicyRel fetchPasswordPolicyRel(
+		long passwordPolicyRelId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _passwordPolicyRelLocalService.fetchPasswordPolicyRel(passwordPolicyRelId);
 	}
 
 	/**
@@ -318,11 +325,26 @@ public class PasswordPolicyRelLocalServiceWrapper
 			className, classPK);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public PasswordPolicyRelLocalService getWrappedPasswordPolicyRelLocalService() {
 		return _passwordPolicyRelLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedPasswordPolicyRelLocalService(
+		PasswordPolicyRelLocalService passwordPolicyRelLocalService) {
+		_passwordPolicyRelLocalService = passwordPolicyRelLocalService;
+	}
+
+	public PasswordPolicyRelLocalService getWrappedService() {
+		return _passwordPolicyRelLocalService;
+	}
+
+	public void setWrappedService(
 		PasswordPolicyRelLocalService passwordPolicyRelLocalService) {
 		_passwordPolicyRelLocalService = passwordPolicyRelLocalService;
 	}

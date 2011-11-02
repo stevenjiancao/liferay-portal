@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       UserIdMapperLocalService
  * @generated
  */
-public class UserIdMapperLocalServiceWrapper implements UserIdMapperLocalService {
+public class UserIdMapperLocalServiceWrapper implements UserIdMapperLocalService,
+	ServiceWrapper<UserIdMapperLocalService> {
 	public UserIdMapperLocalServiceWrapper(
 		UserIdMapperLocalService userIdMapperLocalService) {
 		_userIdMapperLocalService = userIdMapperLocalService;
@@ -147,6 +148,12 @@ public class UserIdMapperLocalServiceWrapper implements UserIdMapperLocalService
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _userIdMapperLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.UserIdMapper fetchUserIdMapper(
+		long userIdMapperId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userIdMapperLocalService.fetchUserIdMapper(userIdMapperId);
 	}
 
 	/**
@@ -278,11 +285,26 @@ public class UserIdMapperLocalServiceWrapper implements UserIdMapperLocalService
 			description, externalUserId);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public UserIdMapperLocalService getWrappedUserIdMapperLocalService() {
 		return _userIdMapperLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedUserIdMapperLocalService(
+		UserIdMapperLocalService userIdMapperLocalService) {
+		_userIdMapperLocalService = userIdMapperLocalService;
+	}
+
+	public UserIdMapperLocalService getWrappedService() {
+		return _userIdMapperLocalService;
+	}
+
+	public void setWrappedService(
 		UserIdMapperLocalService userIdMapperLocalService) {
 		_userIdMapperLocalService = userIdMapperLocalService;
 	}

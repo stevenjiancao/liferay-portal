@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.blogs.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link BlogsEntryLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.blogs.service;
  * @see       BlogsEntryLocalService
  * @generated
  */
-public class BlogsEntryLocalServiceWrapper implements BlogsEntryLocalService {
+public class BlogsEntryLocalServiceWrapper implements BlogsEntryLocalService,
+	ServiceWrapper<BlogsEntryLocalService> {
 	public BlogsEntryLocalServiceWrapper(
 		BlogsEntryLocalService blogsEntryLocalService) {
 		_blogsEntryLocalService = blogsEntryLocalService;
@@ -147,6 +150,12 @@ public class BlogsEntryLocalServiceWrapper implements BlogsEntryLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _blogsEntryLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.blogs.model.BlogsEntry fetchBlogsEntry(
+		long entryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _blogsEntryLocalService.fetchBlogsEntry(entryId);
 	}
 
 	/**
@@ -497,12 +506,26 @@ public class BlogsEntryLocalServiceWrapper implements BlogsEntryLocalService {
 			serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public BlogsEntryLocalService getWrappedBlogsEntryLocalService() {
 		return _blogsEntryLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedBlogsEntryLocalService(
 		BlogsEntryLocalService blogsEntryLocalService) {
+		_blogsEntryLocalService = blogsEntryLocalService;
+	}
+
+	public BlogsEntryLocalService getWrappedService() {
+		return _blogsEntryLocalService;
+	}
+
+	public void setWrappedService(BlogsEntryLocalService blogsEntryLocalService) {
 		_blogsEntryLocalService = blogsEntryLocalService;
 	}
 

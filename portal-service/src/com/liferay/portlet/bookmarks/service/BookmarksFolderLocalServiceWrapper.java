@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.bookmarks.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link BookmarksFolderLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.bookmarks.service;
  * @generated
  */
 public class BookmarksFolderLocalServiceWrapper
-	implements BookmarksFolderLocalService {
+	implements BookmarksFolderLocalService,
+		ServiceWrapper<BookmarksFolderLocalService> {
 	public BookmarksFolderLocalServiceWrapper(
 		BookmarksFolderLocalService bookmarksFolderLocalService) {
 		_bookmarksFolderLocalService = bookmarksFolderLocalService;
@@ -149,6 +152,12 @@ public class BookmarksFolderLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _bookmarksFolderLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.bookmarks.model.BookmarksFolder fetchBookmarksFolder(
+		long folderId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _bookmarksFolderLocalService.fetchBookmarksFolder(folderId);
 	}
 
 	/**
@@ -357,11 +366,26 @@ public class BookmarksFolderLocalServiceWrapper
 			serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public BookmarksFolderLocalService getWrappedBookmarksFolderLocalService() {
 		return _bookmarksFolderLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedBookmarksFolderLocalService(
+		BookmarksFolderLocalService bookmarksFolderLocalService) {
+		_bookmarksFolderLocalService = bookmarksFolderLocalService;
+	}
+
+	public BookmarksFolderLocalService getWrappedService() {
+		return _bookmarksFolderLocalService;
+	}
+
+	public void setWrappedService(
 		BookmarksFolderLocalService bookmarksFolderLocalService) {
 		_bookmarksFolderLocalService = bookmarksFolderLocalService;
 	}

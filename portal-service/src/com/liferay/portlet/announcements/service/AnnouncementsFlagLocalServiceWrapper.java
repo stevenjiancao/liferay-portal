@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.announcements.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link AnnouncementsFlagLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.announcements.service;
  * @generated
  */
 public class AnnouncementsFlagLocalServiceWrapper
-	implements AnnouncementsFlagLocalService {
+	implements AnnouncementsFlagLocalService,
+		ServiceWrapper<AnnouncementsFlagLocalService> {
 	public AnnouncementsFlagLocalServiceWrapper(
 		AnnouncementsFlagLocalService announcementsFlagLocalService) {
 		_announcementsFlagLocalService = announcementsFlagLocalService;
@@ -149,6 +152,11 @@ public class AnnouncementsFlagLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _announcementsFlagLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.announcements.model.AnnouncementsFlag fetchAnnouncementsFlag(
+		long flagId) throws com.liferay.portal.kernel.exception.SystemException {
+		return _announcementsFlagLocalService.fetchAnnouncementsFlag(flagId);
 	}
 
 	/**
@@ -279,11 +287,26 @@ public class AnnouncementsFlagLocalServiceWrapper
 		return _announcementsFlagLocalService.getFlag(userId, entryId, value);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public AnnouncementsFlagLocalService getWrappedAnnouncementsFlagLocalService() {
 		return _announcementsFlagLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedAnnouncementsFlagLocalService(
+		AnnouncementsFlagLocalService announcementsFlagLocalService) {
+		_announcementsFlagLocalService = announcementsFlagLocalService;
+	}
+
+	public AnnouncementsFlagLocalService getWrappedService() {
+		return _announcementsFlagLocalService;
+	}
+
+	public void setWrappedService(
 		AnnouncementsFlagLocalService announcementsFlagLocalService) {
 		_announcementsFlagLocalService = announcementsFlagLocalService;
 	}

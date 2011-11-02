@@ -38,8 +38,15 @@ if ((structure == null) && (template != null)) {
 
 long structureId = BeanParamUtil.getLong(structure, request, "structureId");
 
+String mode = BeanParamUtil.getString(template, request, "mode", "create");
 String type = BeanParamUtil.getString(template, request, "type", "detail");
 String script = BeanParamUtil.getString(template, request, "script");
+
+JSONArray scriptJSONArray = null;
+
+if (type.equals("detail") && Validator.isNotNull(script)) {
+	scriptJSONArray = DDMXSDUtil.getJSONArray(script);
+}
 
 String structureAvailableFields = ParamUtil.getString(request, "structureAvailableFields");
 
@@ -96,10 +103,19 @@ if (Validator.isNotNull(structureAvailableFields)) {
 				<aui:input name="description" />
 
 				<c:if test='<%= type.equals("detail") %>'>
-					<aui:select helpMessage="only-display-required-fields-in-creation-mode" label="mode" name="mode">
+					<aui:select helpMessage="only-allow-deleting-required-fields-in-edit-mode" label="mode" name="mode">
 						<aui:option label="create" />
 						<aui:option label="edit" />
 					</aui:select>
+
+					<aui:script use="aui-base,event-valuechange">
+						A.one('#<portlet:namespace />mode').on(
+							'valueChange',
+							function(event) {
+								<portlet:namespace />toggleMode(event.newVal);
+							}
+						);
+					</aui:script>
 				</c:if>
 			</liferay-ui:panel>
 		</liferay-ui:panel-container>
@@ -117,6 +133,16 @@ if (Validator.isNotNull(structureAvailableFields)) {
 
 <c:if test='<%= type.equals("detail") %>'>
 	<%@ include file="/html/portlet/dynamic_data_mapping/form_builder.jspf" %>
+
+	<aui:script use="aui-base">
+		window.<portlet:namespace />toggleMode = function(mode) {
+			var modeEdit = (mode === '<%= DDMTemplateConstants.TEMPLATE_MODE_EDIT %>');
+
+			window.<portlet:namespace />formBuilder.set('allowRemoveRequiredFields', modeEdit);
+		};
+
+		<portlet:namespace />toggleMode('<%= HtmlUtil.escape(mode) %>');
+	</aui:script>
 </c:if>
 
 <aui:button-row>

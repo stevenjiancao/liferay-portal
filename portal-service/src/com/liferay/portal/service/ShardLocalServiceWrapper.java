@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       ShardLocalService
  * @generated
  */
-public class ShardLocalServiceWrapper implements ShardLocalService {
+public class ShardLocalServiceWrapper implements ShardLocalService,
+	ServiceWrapper<ShardLocalService> {
 	public ShardLocalServiceWrapper(ShardLocalService shardLocalService) {
 		_shardLocalService = shardLocalService;
 	}
@@ -146,6 +147,11 @@ public class ShardLocalServiceWrapper implements ShardLocalService {
 		return _shardLocalService.dynamicQueryCount(dynamicQuery);
 	}
 
+	public com.liferay.portal.model.Shard fetchShard(long shardId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _shardLocalService.fetchShard(shardId);
+	}
+
 	/**
 	* Returns the shard with the primary key.
 	*
@@ -253,11 +259,25 @@ public class ShardLocalServiceWrapper implements ShardLocalService {
 		return _shardLocalService.getShard(className, classPK);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ShardLocalService getWrappedShardLocalService() {
 		return _shardLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedShardLocalService(ShardLocalService shardLocalService) {
+		_shardLocalService = shardLocalService;
+	}
+
+	public ShardLocalService getWrappedService() {
+		return _shardLocalService;
+	}
+
+	public void setWrappedService(ShardLocalService shardLocalService) {
 		_shardLocalService = shardLocalService;
 	}
 

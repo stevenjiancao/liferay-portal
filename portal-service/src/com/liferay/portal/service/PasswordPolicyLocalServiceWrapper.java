@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class PasswordPolicyLocalServiceWrapper
-	implements PasswordPolicyLocalService {
+	implements PasswordPolicyLocalService,
+		ServiceWrapper<PasswordPolicyLocalService> {
 	public PasswordPolicyLocalServiceWrapper(
 		PasswordPolicyLocalService passwordPolicyLocalService) {
 		_passwordPolicyLocalService = passwordPolicyLocalService;
@@ -150,6 +151,12 @@ public class PasswordPolicyLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _passwordPolicyLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.PasswordPolicy fetchPasswordPolicy(
+		long passwordPolicyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _passwordPolicyLocalService.fetchPasswordPolicy(passwordPolicyId);
 	}
 
 	/**
@@ -340,11 +347,26 @@ public class PasswordPolicyLocalServiceWrapper
 			lockoutDuration, resetFailureCount, resetTicketMaxAge);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public PasswordPolicyLocalService getWrappedPasswordPolicyLocalService() {
 		return _passwordPolicyLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedPasswordPolicyLocalService(
+		PasswordPolicyLocalService passwordPolicyLocalService) {
+		_passwordPolicyLocalService = passwordPolicyLocalService;
+	}
+
+	public PasswordPolicyLocalService getWrappedService() {
+		return _passwordPolicyLocalService;
+	}
+
+	public void setWrappedService(
 		PasswordPolicyLocalService passwordPolicyLocalService) {
 		_passwordPolicyLocalService = passwordPolicyLocalService;
 	}

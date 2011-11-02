@@ -158,6 +158,12 @@ public class SocialActivitySettingLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery);
 	}
 
+	public static com.liferay.portlet.social.model.SocialActivitySetting fetchSocialActivitySetting(
+		long activitySettingId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().fetchSocialActivitySetting(activitySettingId);
+	}
+
 	/**
 	* Returns the social activity setting with the primary key.
 	*
@@ -254,6 +260,47 @@ public class SocialActivitySettingLocalServiceUtil {
 	*/
 	public static void setBeanIdentifier(java.lang.String beanIdentifier) {
 		getService().setBeanIdentifier(beanIdentifier);
+	}
+
+	public static com.liferay.portlet.social.model.SocialActivityDefinition getActivityDefinition(
+		long groupId, java.lang.String className, int activityType)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .getActivityDefinition(groupId, className, activityType);
+	}
+
+	public static java.util.List<com.liferay.portlet.social.model.SocialActivityDefinition> getActivityDefinitions(
+		long groupId, java.lang.String className)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getActivityDefinitions(groupId, className);
+	}
+
+	public static java.util.List<com.liferay.portlet.social.model.SocialActivitySetting> getActivitySettings(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getActivitySettings(groupId);
+	}
+
+	public static boolean isEnabled(long groupId, long classNameId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().isEnabled(groupId, classNameId);
+	}
+
+	public static void updateActivitySetting(long groupId,
+		java.lang.String className, boolean enabled)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().updateActivitySetting(groupId, className, enabled);
+	}
+
+	public static void updateActivitySettings(long groupId,
+		java.lang.String className, int activityType,
+		java.util.List<com.liferay.portlet.social.model.SocialActivityCounterDefinition> activityCounterDefinitions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.updateActivitySettings(groupId, className, activityType,
+			activityCounterDefinitions);
 	}
 
 	public static SocialActivitySettingLocalService getService() {

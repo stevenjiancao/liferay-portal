@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.shopping.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link ShoppingCategoryLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.shopping.service;
  * @generated
  */
 public class ShoppingCategoryLocalServiceWrapper
-	implements ShoppingCategoryLocalService {
+	implements ShoppingCategoryLocalService,
+		ServiceWrapper<ShoppingCategoryLocalService> {
 	public ShoppingCategoryLocalServiceWrapper(
 		ShoppingCategoryLocalService shoppingCategoryLocalService) {
 		_shoppingCategoryLocalService = shoppingCategoryLocalService;
@@ -149,6 +152,12 @@ public class ShoppingCategoryLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _shoppingCategoryLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.shopping.model.ShoppingCategory fetchShoppingCategory(
+		long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _shoppingCategoryLocalService.fetchShoppingCategory(categoryId);
 	}
 
 	/**
@@ -377,11 +386,26 @@ public class ShoppingCategoryLocalServiceWrapper
 			serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ShoppingCategoryLocalService getWrappedShoppingCategoryLocalService() {
 		return _shoppingCategoryLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedShoppingCategoryLocalService(
+		ShoppingCategoryLocalService shoppingCategoryLocalService) {
+		_shoppingCategoryLocalService = shoppingCategoryLocalService;
+	}
+
+	public ShoppingCategoryLocalService getWrappedService() {
+		return _shoppingCategoryLocalService;
+	}
+
+	public void setWrappedService(
 		ShoppingCategoryLocalService shoppingCategoryLocalService) {
 		_shoppingCategoryLocalService = shoppingCategoryLocalService;
 	}

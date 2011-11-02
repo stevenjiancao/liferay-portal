@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       PortletItemLocalService
  * @generated
  */
-public class PortletItemLocalServiceWrapper implements PortletItemLocalService {
+public class PortletItemLocalServiceWrapper implements PortletItemLocalService,
+	ServiceWrapper<PortletItemLocalService> {
 	public PortletItemLocalServiceWrapper(
 		PortletItemLocalService portletItemLocalService) {
 		_portletItemLocalService = portletItemLocalService;
@@ -147,6 +148,12 @@ public class PortletItemLocalServiceWrapper implements PortletItemLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _portletItemLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.PortletItem fetchPortletItem(
+		long portletItemId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _portletItemLocalService.fetchPortletItem(portletItemId);
 	}
 
 	/**
@@ -285,11 +292,26 @@ public class PortletItemLocalServiceWrapper implements PortletItemLocalService {
 			name, portletId, className);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public PortletItemLocalService getWrappedPortletItemLocalService() {
 		return _portletItemLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedPortletItemLocalService(
+		PortletItemLocalService portletItemLocalService) {
+		_portletItemLocalService = portletItemLocalService;
+	}
+
+	public PortletItemLocalService getWrappedService() {
+		return _portletItemLocalService;
+	}
+
+	public void setWrappedService(
 		PortletItemLocalService portletItemLocalService) {
 		_portletItemLocalService = portletItemLocalService;
 	}

@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.dynamicdatamapping.model;
 
+import com.liferay.portal.model.ModelWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link DDMStructure}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.dynamicdatamapping.model;
  * @see       DDMStructure
  * @generated
  */
-public class DDMStructureWrapper implements DDMStructure {
+public class DDMStructureWrapper implements DDMStructure,
+	ModelWrapper<DDMStructure> {
 	public DDMStructureWrapper(DDMStructure ddmStructure) {
 		_ddmStructure = ddmStructure;
 	}
@@ -553,6 +556,24 @@ public class DDMStructureWrapper implements DDMStructure {
 		_ddmStructure.setStorageType(storageType);
 	}
 
+	/**
+	* Returns the type of this d d m structure.
+	*
+	* @return the type of this d d m structure
+	*/
+	public int getType() {
+		return _ddmStructure.getType();
+	}
+
+	/**
+	* Sets the type of this d d m structure.
+	*
+	* @param type the type of this d d m structure
+	*/
+	public void setType(int type) {
+		_ddmStructure.setType(type);
+	}
+
 	public boolean isNew() {
 		return _ddmStructure.isNew();
 	}
@@ -701,7 +722,14 @@ public class DDMStructureWrapper implements DDMStructure {
 		return _ddmStructure.hasField(fieldName);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedModel}
+	 */
 	public DDMStructure getWrappedDDMStructure() {
+		return _ddmStructure;
+	}
+
+	public DDMStructure getWrappedModel() {
 		return _ddmStructure;
 	}
 

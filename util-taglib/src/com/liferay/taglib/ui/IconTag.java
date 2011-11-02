@@ -18,6 +18,8 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.taglib.util.IncludeTag;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -32,6 +34,10 @@ public class IconTag extends IncludeTag {
 
 	public void setCssClass(String cssClass) {
 		_cssClass = cssClass;
+	}
+
+	public void setData(Map<String, Object> data) {
+		_data = data;
 	}
 
 	public void setId(String id) {
@@ -62,6 +68,10 @@ public class IconTag extends IncludeTag {
 		_method = method;
 	}
 
+	public void setOnClick(String onClick) {
+		_onClick = onClick;
+	}
+
 	public void setSrc(String src) {
 		_src = src;
 	}
@@ -85,6 +95,7 @@ public class IconTag extends IncludeTag {
 	@Override
 	protected void cleanUp() {
 		_cssClass = null;
+		_data = null;
 		_id = null;
 		_image = null;
 		_imageHover = null;
@@ -92,6 +103,7 @@ public class IconTag extends IncludeTag {
 		_lang = null;
 		_message = null;
 		_method = null;
+		_onClick = null;
 		_src = null;
 		_srcHover = null;
 		_target = null;
@@ -127,6 +139,7 @@ public class IconTag extends IncludeTag {
 		}
 
 		request.setAttribute("liferay-ui:icon:cssClass", _cssClass);
+		request.setAttribute("liferay-ui:icon:data", _data);
 		request.setAttribute("liferay-ui:icon:id", id);
 		request.setAttribute("liferay-ui:icon:image", _image);
 		request.setAttribute("liferay-ui:icon:imageHover", _imageHover);
@@ -134,6 +147,7 @@ public class IconTag extends IncludeTag {
 		request.setAttribute("liferay-ui:icon:lang", _lang);
 		request.setAttribute("liferay-ui:icon:message", _message);
 		request.setAttribute("liferay-ui:icon:method", _method);
+		request.setAttribute("liferay-ui:icon:onClick", _onClick);
 		request.setAttribute("liferay-ui:icon:src", _src);
 		request.setAttribute("liferay-ui:icon:srcHover", _srcHover);
 		request.setAttribute("liferay-ui:icon:target", _target);
@@ -147,6 +161,7 @@ public class IconTag extends IncludeTag {
 	private static final String _PAGE = "/html/taglib/ui/icon/page.jsp";
 
 	private String _cssClass;
+	private Map<String, Object> _data;
 	private String _id;
 	private String _image;
 	private String _imageHover;
@@ -154,6 +169,7 @@ public class IconTag extends IncludeTag {
 	private String _lang;
 	private String _message;
 	private String _method;
+	private String _onClick;
 	private String _src;
 	private String _srcHover;
 	private String _target = "_self";

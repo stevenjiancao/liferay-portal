@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.asset.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link AssetCategoryPropertyLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.asset.service;
  * @generated
  */
 public class AssetCategoryPropertyLocalServiceWrapper
-	implements AssetCategoryPropertyLocalService {
+	implements AssetCategoryPropertyLocalService,
+		ServiceWrapper<AssetCategoryPropertyLocalService> {
 	public AssetCategoryPropertyLocalServiceWrapper(
 		AssetCategoryPropertyLocalService assetCategoryPropertyLocalService) {
 		_assetCategoryPropertyLocalService = assetCategoryPropertyLocalService;
@@ -149,6 +152,12 @@ public class AssetCategoryPropertyLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _assetCategoryPropertyLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.asset.model.AssetCategoryProperty fetchAssetCategoryProperty(
+		long categoryPropertyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _assetCategoryPropertyLocalService.fetchAssetCategoryProperty(categoryPropertyId);
 	}
 
 	/**
@@ -317,11 +326,26 @@ public class AssetCategoryPropertyLocalServiceWrapper
 			key, value);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public AssetCategoryPropertyLocalService getWrappedAssetCategoryPropertyLocalService() {
 		return _assetCategoryPropertyLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedAssetCategoryPropertyLocalService(
+		AssetCategoryPropertyLocalService assetCategoryPropertyLocalService) {
+		_assetCategoryPropertyLocalService = assetCategoryPropertyLocalService;
+	}
+
+	public AssetCategoryPropertyLocalService getWrappedService() {
+		return _assetCategoryPropertyLocalService;
+	}
+
+	public void setWrappedService(
 		AssetCategoryPropertyLocalService assetCategoryPropertyLocalService) {
 		_assetCategoryPropertyLocalService = assetCategoryPropertyLocalService;
 	}

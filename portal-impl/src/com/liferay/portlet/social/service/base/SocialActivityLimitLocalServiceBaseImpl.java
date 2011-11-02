@@ -61,6 +61,7 @@ import com.liferay.portlet.social.service.SocialRelationLocalService;
 import com.liferay.portlet.social.service.SocialRequestInterpreterLocalService;
 import com.liferay.portlet.social.service.SocialRequestLocalService;
 import com.liferay.portlet.social.service.persistence.SocialActivityAchievementPersistence;
+import com.liferay.portlet.social.service.persistence.SocialActivityCounterFinder;
 import com.liferay.portlet.social.service.persistence.SocialActivityCounterPersistence;
 import com.liferay.portlet.social.service.persistence.SocialActivityFinder;
 import com.liferay.portlet.social.service.persistence.SocialActivityLimitPersistence;
@@ -254,6 +255,11 @@ public abstract class SocialActivityLimitLocalServiceBaseImpl
 	public long dynamicQueryCount(DynamicQuery dynamicQuery)
 		throws SystemException {
 		return socialActivityLimitPersistence.countWithDynamicQuery(dynamicQuery);
+	}
+
+	public SocialActivityLimit fetchSocialActivityLimit(long activityLimitId)
+		throws SystemException {
+		return socialActivityLimitPersistence.fetchByPrimaryKey(activityLimitId);
 	}
 
 	/**
@@ -476,6 +482,25 @@ public abstract class SocialActivityLimitLocalServiceBaseImpl
 	public void setSocialActivityCounterPersistence(
 		SocialActivityCounterPersistence socialActivityCounterPersistence) {
 		this.socialActivityCounterPersistence = socialActivityCounterPersistence;
+	}
+
+	/**
+	 * Returns the social activity counter finder.
+	 *
+	 * @return the social activity counter finder
+	 */
+	public SocialActivityCounterFinder getSocialActivityCounterFinder() {
+		return socialActivityCounterFinder;
+	}
+
+	/**
+	 * Sets the social activity counter finder.
+	 *
+	 * @param socialActivityCounterFinder the social activity counter finder
+	 */
+	public void setSocialActivityCounterFinder(
+		SocialActivityCounterFinder socialActivityCounterFinder) {
+		this.socialActivityCounterFinder = socialActivityCounterFinder;
 	}
 
 	/**
@@ -1200,6 +1225,8 @@ public abstract class SocialActivityLimitLocalServiceBaseImpl
 	protected SocialActivityCounterLocalService socialActivityCounterLocalService;
 	@BeanReference(type = SocialActivityCounterPersistence.class)
 	protected SocialActivityCounterPersistence socialActivityCounterPersistence;
+	@BeanReference(type = SocialActivityCounterFinder.class)
+	protected SocialActivityCounterFinder socialActivityCounterFinder;
 	@BeanReference(type = SocialActivityInterpreterLocalService.class)
 	protected SocialActivityInterpreterLocalService socialActivityInterpreterLocalService;
 	@BeanReference(type = SocialActivityLimitLocalService.class)

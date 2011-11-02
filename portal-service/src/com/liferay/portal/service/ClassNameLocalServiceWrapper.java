@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       ClassNameLocalService
  * @generated
  */
-public class ClassNameLocalServiceWrapper implements ClassNameLocalService {
+public class ClassNameLocalServiceWrapper implements ClassNameLocalService,
+	ServiceWrapper<ClassNameLocalService> {
 	public ClassNameLocalServiceWrapper(
 		ClassNameLocalService classNameLocalService) {
 		_classNameLocalService = classNameLocalService;
@@ -145,6 +146,11 @@ public class ClassNameLocalServiceWrapper implements ClassNameLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _classNameLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.ClassName fetchClassName(long classNameId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _classNameLocalService.fetchClassName(classNameId);
 	}
 
 	/**
@@ -275,12 +281,26 @@ public class ClassNameLocalServiceWrapper implements ClassNameLocalService {
 		_classNameLocalService.invalidate();
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ClassNameLocalService getWrappedClassNameLocalService() {
 		return _classNameLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedClassNameLocalService(
 		ClassNameLocalService classNameLocalService) {
+		_classNameLocalService = classNameLocalService;
+	}
+
+	public ClassNameLocalService getWrappedService() {
+		return _classNameLocalService;
+	}
+
+	public void setWrappedService(ClassNameLocalService classNameLocalService) {
 		_classNameLocalService = classNameLocalService;
 	}
 

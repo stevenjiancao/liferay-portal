@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.asset.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link AssetTagStatsLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.asset.service;
  * @generated
  */
 public class AssetTagStatsLocalServiceWrapper
-	implements AssetTagStatsLocalService {
+	implements AssetTagStatsLocalService,
+		ServiceWrapper<AssetTagStatsLocalService> {
 	public AssetTagStatsLocalServiceWrapper(
 		AssetTagStatsLocalService assetTagStatsLocalService) {
 		_assetTagStatsLocalService = assetTagStatsLocalService;
@@ -148,6 +151,12 @@ public class AssetTagStatsLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _assetTagStatsLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.asset.model.AssetTagStats fetchAssetTagStats(
+		long tagStatsId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _assetTagStatsLocalService.fetchAssetTagStats(tagStatsId);
 	}
 
 	/**
@@ -372,11 +381,26 @@ public class AssetTagStatsLocalServiceWrapper
 		return _assetTagStatsLocalService.updateTagStats(tagId, classNameId);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public AssetTagStatsLocalService getWrappedAssetTagStatsLocalService() {
 		return _assetTagStatsLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedAssetTagStatsLocalService(
+		AssetTagStatsLocalService assetTagStatsLocalService) {
+		_assetTagStatsLocalService = assetTagStatsLocalService;
+	}
+
+	public AssetTagStatsLocalService getWrappedService() {
+		return _assetTagStatsLocalService;
+	}
+
+	public void setWrappedService(
 		AssetTagStatsLocalService assetTagStatsLocalService) {
 		_assetTagStatsLocalService = assetTagStatsLocalService;
 	}

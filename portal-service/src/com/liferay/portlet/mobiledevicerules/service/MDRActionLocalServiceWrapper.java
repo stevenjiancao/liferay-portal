@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.mobiledevicerules.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link MDRActionLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.mobiledevicerules.service;
  * @see       MDRActionLocalService
  * @generated
  */
-public class MDRActionLocalServiceWrapper implements MDRActionLocalService {
+public class MDRActionLocalServiceWrapper implements MDRActionLocalService,
+	ServiceWrapper<MDRActionLocalService> {
 	public MDRActionLocalServiceWrapper(
 		MDRActionLocalService mdrActionLocalService) {
 		_mdrActionLocalService = mdrActionLocalService;
@@ -147,6 +150,12 @@ public class MDRActionLocalServiceWrapper implements MDRActionLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _mdrActionLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.mobiledevicerules.model.MDRAction fetchMDRAction(
+		long actionId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _mdrActionLocalService.fetchMDRAction(actionId);
 	}
 
 	/**
@@ -351,12 +360,26 @@ public class MDRActionLocalServiceWrapper implements MDRActionLocalService {
 			descriptionMap, type, typeSettingsProperties, serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public MDRActionLocalService getWrappedMDRActionLocalService() {
 		return _mdrActionLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedMDRActionLocalService(
 		MDRActionLocalService mdrActionLocalService) {
+		_mdrActionLocalService = mdrActionLocalService;
+	}
+
+	public MDRActionLocalService getWrappedService() {
+		return _mdrActionLocalService;
+	}
+
+	public void setWrappedService(MDRActionLocalService mdrActionLocalService) {
 		_mdrActionLocalService = mdrActionLocalService;
 	}
 

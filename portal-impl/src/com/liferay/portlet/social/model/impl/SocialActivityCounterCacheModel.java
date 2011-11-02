@@ -20,6 +20,8 @@ import com.liferay.portal.model.CacheModel;
 
 import com.liferay.portlet.social.model.SocialActivityCounter;
 
+import java.io.Serializable;
+
 /**
  * The cache model class for representing SocialActivityCounter in entity cache.
  *
@@ -27,7 +29,8 @@ import com.liferay.portlet.social.model.SocialActivityCounter;
  * @see SocialActivityCounter
  * @generated
  */
-public class SocialActivityCounterCacheModel implements CacheModel<SocialActivityCounter> {
+public class SocialActivityCounterCacheModel implements CacheModel<SocialActivityCounter>,
+	Serializable {
 	@Override
 	public String toString() {
 		StringBundler sb = new StringBundler(25);
@@ -44,8 +47,8 @@ public class SocialActivityCounterCacheModel implements CacheModel<SocialActivit
 		sb.append(classPK);
 		sb.append(", name=");
 		sb.append(name);
-		sb.append(", type=");
-		sb.append(type);
+		sb.append(", ownerType=");
+		sb.append(ownerType);
 		sb.append(", currentValue=");
 		sb.append(currentValue);
 		sb.append(", totalValue=");
@@ -77,7 +80,7 @@ public class SocialActivityCounterCacheModel implements CacheModel<SocialActivit
 			socialActivityCounterImpl.setName(name);
 		}
 
-		socialActivityCounterImpl.setType(type);
+		socialActivityCounterImpl.setOwnerType(ownerType);
 		socialActivityCounterImpl.setCurrentValue(currentValue);
 		socialActivityCounterImpl.setTotalValue(totalValue);
 		socialActivityCounterImpl.setGraceValue(graceValue);
@@ -95,7 +98,7 @@ public class SocialActivityCounterCacheModel implements CacheModel<SocialActivit
 	public long classNameId;
 	public long classPK;
 	public String name;
-	public int type;
+	public int ownerType;
 	public int currentValue;
 	public int totalValue;
 	public int graceValue;

@@ -144,6 +144,8 @@ if (folder != null) {
 	for (int i = 0; i < results.size(); i++) {
 		FileEntry fileEntry = (FileEntry)results.get(i);
 
+		FileVersion fileVersion = fileEntry.getFileVersion();
+
 		DLFileShortcut fileShortcut = null;
 	%>
 
@@ -188,24 +190,19 @@ if (folder != null) {
 		sb.append("parent.");
 		sb.append(renderResponse.getNamespace());
 		sb.append("selectDocumentLibrary('");
+		sb.append(themeDisplay.getPathContext());
+		sb.append("/documents/");
+		sb.append(groupId);
+		sb.append(StringPool.SLASH);
+		sb.append(fileEntry.getFolderId());
+		sb.append(StringPool.SLASH);
+		sb.append(HttpUtil.encodeURL(HtmlUtil.unescape(fileEntry.getTitle())));
 
-		if (ImageProcessor.hasImages(fileEntry.getFileVersion())) {
-			sb.append(themeDisplay.getPathImage());
-			sb.append("/image_gallery?uuid=");
-			sb.append(fileEntry.getUuid());
-			sb.append("&groupId=");
-			sb.append(fileEntry.getGroupId());
-			sb.append("&t=");
-			sb.append(WebServerServletTokenUtil.getToken(fileEntry.getLargeImageId()));
-		}
-		else {
-			sb.append(themeDisplay.getPathContext());
-			sb.append("/documents/");
-			sb.append(groupId);
-			sb.append(StringPool.SLASH);
-			sb.append(fileEntry.getFolderId());
-			sb.append(StringPool.SLASH);
-			sb.append(HttpUtil.encodeURL(HtmlUtil.unescape(fileEntry.getTitle())));
+		Set<String> imageMimeTypes = ImageProcessor.getImageMimeTypes();
+
+		if (imageMimeTypes.contains(fileEntry.getMimeType())) {
+			sb.append("?t=");
+			sb.append(WebServerServletTokenUtil.getToken(fileEntry.getFileEntryId()));
 		}
 
 		sb.append("', '");

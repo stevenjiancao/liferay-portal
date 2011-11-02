@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       GroupLocalService
  * @generated
  */
-public class GroupLocalServiceWrapper implements GroupLocalService {
+public class GroupLocalServiceWrapper implements GroupLocalService,
+	ServiceWrapper<GroupLocalService> {
 	public GroupLocalServiceWrapper(GroupLocalService groupLocalService) {
 		_groupLocalService = groupLocalService;
 	}
@@ -146,6 +147,11 @@ public class GroupLocalServiceWrapper implements GroupLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _groupLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.Group fetchGroup(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _groupLocalService.fetchGroup(groupId);
 	}
 
 	/**
@@ -382,19 +388,6 @@ public class GroupLocalServiceWrapper implements GroupLocalService {
 		long companyId, java.lang.String friendlyURL)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _groupLocalService.fetchFriendlyURLGroup(companyId, friendlyURL);
-	}
-
-	/**
-	* Returns the group with the matching primary key.
-	*
-	* @param groupId the primary key of the group
-	* @return the group with the primary key, or <code>null</code> if a group
-	with the primary key could not be found
-	* @throws SystemException if a system exception occurred
-	*/
-	public com.liferay.portal.model.Group fetchGroup(long groupId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _groupLocalService.fetchGroup(groupId);
 	}
 
 	/**
@@ -1335,11 +1328,25 @@ public class GroupLocalServiceWrapper implements GroupLocalService {
 		return _groupLocalService.updateSite(groupId, site);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public GroupLocalService getWrappedGroupLocalService() {
 		return _groupLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedGroupLocalService(GroupLocalService groupLocalService) {
+		_groupLocalService = groupLocalService;
+	}
+
+	public GroupLocalService getWrappedService() {
+		return _groupLocalService;
+	}
+
+	public void setWrappedService(GroupLocalService groupLocalService) {
 		_groupLocalService = groupLocalService;
 	}
 

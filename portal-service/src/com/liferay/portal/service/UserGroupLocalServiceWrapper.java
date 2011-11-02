@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       UserGroupLocalService
  * @generated
  */
-public class UserGroupLocalServiceWrapper implements UserGroupLocalService {
+public class UserGroupLocalServiceWrapper implements UserGroupLocalService,
+	ServiceWrapper<UserGroupLocalService> {
 	public UserGroupLocalServiceWrapper(
 		UserGroupLocalService userGroupLocalService) {
 		_userGroupLocalService = userGroupLocalService;
@@ -147,6 +148,11 @@ public class UserGroupLocalServiceWrapper implements UserGroupLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _userGroupLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.UserGroup fetchUserGroup(long userGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userGroupLocalService.fetchUserGroup(userGroupId);
 	}
 
 	/**
@@ -573,12 +579,26 @@ public class UserGroupLocalServiceWrapper implements UserGroupLocalService {
 			privateLayoutSetPrototypeId);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public UserGroupLocalService getWrappedUserGroupLocalService() {
 		return _userGroupLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedUserGroupLocalService(
 		UserGroupLocalService userGroupLocalService) {
+		_userGroupLocalService = userGroupLocalService;
+	}
+
+	public UserGroupLocalService getWrappedService() {
+		return _userGroupLocalService;
+	}
+
+	public void setWrappedService(UserGroupLocalService userGroupLocalService) {
 		_userGroupLocalService = userGroupLocalService;
 	}
 

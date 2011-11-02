@@ -610,14 +610,24 @@ AUI().add(
 						function(event) {
 							event.preventDefault();
 
+							var fullDialog = event.currentTarget.ancestor('li').hasClass('full-dialog');
+
 							manageContent.hide();
+
+							var width = 960;
+
+							if (fullDialog) {
+								width = '90%';
+							}
 
 							instance._openWindow(
 								{
 									dialog: {
 										align: Util.Window.ALIGN_CENTER,
-										width: 960
-									}
+										modal: fullDialog,
+										width: width
+									},
+									id: 'manageContentDialog'
 								},
 								event.currentTarget
 							);
@@ -632,7 +642,7 @@ AUI().add(
 					if (!manageCustomizationLink.hasClass('disabled')) {
 						instance._controls = dockBar.one('.layout-customizable-controls');
 
-						var columns = A.all('.portlet-column');
+						var columns = A.all('.portlet-column .portlet-dropzone:not(.portlet-dropzone-disabled)');
 
 						BODY.delegate('click', instance._onChangeCustomization, '.layout-customizable-checkbox', instance);
 

@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       ImageLocalService
  * @generated
  */
-public class ImageLocalServiceWrapper implements ImageLocalService {
+public class ImageLocalServiceWrapper implements ImageLocalService,
+	ServiceWrapper<ImageLocalService> {
 	public ImageLocalServiceWrapper(ImageLocalService imageLocalService) {
 		_imageLocalService = imageLocalService;
 	}
@@ -144,6 +145,11 @@ public class ImageLocalServiceWrapper implements ImageLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _imageLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.Image fetchImage(long imageId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _imageLocalService.fetchImage(imageId);
 	}
 
 	/**
@@ -282,6 +288,13 @@ public class ImageLocalServiceWrapper implements ImageLocalService {
 		return _imageLocalService.getImage(is);
 	}
 
+	public com.liferay.portal.model.Image getImage(java.io.InputStream is,
+		boolean cleanUpStream)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _imageLocalService.getImage(is, cleanUpStream);
+	}
+
 	public com.liferay.portal.model.Image getImageOrDefault(long imageId) {
 		return _imageLocalService.getImageOrDefault(imageId);
 	}
@@ -321,6 +334,13 @@ public class ImageLocalServiceWrapper implements ImageLocalService {
 	}
 
 	public com.liferay.portal.model.Image updateImage(long imageId,
+		java.io.InputStream is, boolean cleanUpStream)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _imageLocalService.updateImage(imageId, is, cleanUpStream);
+	}
+
+	public com.liferay.portal.model.Image updateImage(long imageId,
 		byte[] bytes, java.lang.String type, int height, int width, int size)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -328,11 +348,25 @@ public class ImageLocalServiceWrapper implements ImageLocalService {
 			width, size);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ImageLocalService getWrappedImageLocalService() {
 		return _imageLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedImageLocalService(ImageLocalService imageLocalService) {
+		_imageLocalService = imageLocalService;
+	}
+
+	public ImageLocalService getWrappedService() {
+		return _imageLocalService;
+	}
+
+	public void setWrappedService(ImageLocalService imageLocalService) {
 		_imageLocalService = imageLocalService;
 	}
 

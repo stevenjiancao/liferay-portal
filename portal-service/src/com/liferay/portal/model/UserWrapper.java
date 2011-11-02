@@ -23,7 +23,7 @@ package com.liferay.portal.model;
  * @see       User
  * @generated
  */
-public class UserWrapper implements User {
+public class UserWrapper implements User, ModelWrapper<User> {
 	public UserWrapper(User user) {
 		_user = user;
 	}
@@ -964,6 +964,12 @@ public class UserWrapper implements User {
 		return _user.getGroup();
 	}
 
+	public long getGroupId()
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _user.getGroupId();
+	}
+
 	public long[] getGroupIds()
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -1206,7 +1212,14 @@ public class UserWrapper implements User {
 		return _user.getWebsites();
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedModel}
+	 */
 	public User getWrappedUser() {
+		return _user;
+	}
+
+	public User getWrappedModel() {
 		return _user;
 	}
 

@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       OrganizationLocalService
  * @generated
  */
-public class OrganizationLocalServiceWrapper implements OrganizationLocalService {
+public class OrganizationLocalServiceWrapper implements OrganizationLocalService,
+	ServiceWrapper<OrganizationLocalService> {
 	public OrganizationLocalServiceWrapper(
 		OrganizationLocalService organizationLocalService) {
 		_organizationLocalService = organizationLocalService;
@@ -149,6 +150,12 @@ public class OrganizationLocalServiceWrapper implements OrganizationLocalService
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _organizationLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.Organization fetchOrganization(
+		long organizationId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _organizationLocalService.fetchOrganization(organizationId);
 	}
 
 	/**
@@ -761,14 +768,14 @@ public class OrganizationLocalServiceWrapper implements OrganizationLocalService
 	* </p>
 	*
 	* @param companyId the primary key of the organization's company
-	* @param force whether to force the rebuild even if the tree is not stale
 	* @throws SystemException if a system exception occurred
 	* @see com.liferay.portal.service.persistence.OrganizationPersistence#rebuildTree(
 	long, boolean)
 	*/
-	public void rebuildTree(long companyId, boolean force)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		_organizationLocalService.rebuildTree(companyId, force);
+	public void rebuildTree(long companyId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_organizationLocalService.rebuildTree(companyId);
 	}
 
 	public java.util.List<com.liferay.portal.model.Organization> search(
@@ -1270,11 +1277,26 @@ public class OrganizationLocalServiceWrapper implements OrganizationLocalService
 			regionId, countryId, statusId, comments, site, serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public OrganizationLocalService getWrappedOrganizationLocalService() {
 		return _organizationLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedOrganizationLocalService(
+		OrganizationLocalService organizationLocalService) {
+		_organizationLocalService = organizationLocalService;
+	}
+
+	public OrganizationLocalService getWrappedService() {
+		return _organizationLocalService;
+	}
+
+	public void setWrappedService(
 		OrganizationLocalService organizationLocalService) {
 		_organizationLocalService = organizationLocalService;
 	}

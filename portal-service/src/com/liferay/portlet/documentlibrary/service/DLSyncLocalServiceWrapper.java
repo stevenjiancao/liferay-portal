@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.documentlibrary.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link DLSyncLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.documentlibrary.service;
  * @see       DLSyncLocalService
  * @generated
  */
-public class DLSyncLocalServiceWrapper implements DLSyncLocalService {
+public class DLSyncLocalServiceWrapper implements DLSyncLocalService,
+	ServiceWrapper<DLSyncLocalService> {
 	public DLSyncLocalServiceWrapper(DLSyncLocalService dlSyncLocalService) {
 		_dlSyncLocalService = dlSyncLocalService;
 	}
@@ -148,6 +151,11 @@ public class DLSyncLocalServiceWrapper implements DLSyncLocalService {
 		return _dlSyncLocalService.dynamicQueryCount(dynamicQuery);
 	}
 
+	public com.liferay.portlet.documentlibrary.model.DLSync fetchDLSync(
+		long syncId) throws com.liferay.portal.kernel.exception.SystemException {
+		return _dlSyncLocalService.fetchDLSync(syncId);
+	}
+
 	/**
 	* Returns the d l sync with the primary key.
 	*
@@ -259,12 +267,26 @@ public class DLSyncLocalServiceWrapper implements DLSyncLocalService {
 		return _dlSyncLocalService.updateSync(fileId, parentFolderId, event);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public DLSyncLocalService getWrappedDLSyncLocalService() {
 		return _dlSyncLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedDLSyncLocalService(
 		DLSyncLocalService dlSyncLocalService) {
+		_dlSyncLocalService = dlSyncLocalService;
+	}
+
+	public DLSyncLocalService getWrappedService() {
+		return _dlSyncLocalService;
+	}
+
+	public void setWrappedService(DLSyncLocalService dlSyncLocalService) {
 		_dlSyncLocalService = dlSyncLocalService;
 	}
 

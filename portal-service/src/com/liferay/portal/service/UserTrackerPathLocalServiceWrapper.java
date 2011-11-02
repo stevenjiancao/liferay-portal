@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class UserTrackerPathLocalServiceWrapper
-	implements UserTrackerPathLocalService {
+	implements UserTrackerPathLocalService,
+		ServiceWrapper<UserTrackerPathLocalService> {
 	public UserTrackerPathLocalServiceWrapper(
 		UserTrackerPathLocalService userTrackerPathLocalService) {
 		_userTrackerPathLocalService = userTrackerPathLocalService;
@@ -151,6 +152,12 @@ public class UserTrackerPathLocalServiceWrapper
 		return _userTrackerPathLocalService.dynamicQueryCount(dynamicQuery);
 	}
 
+	public com.liferay.portal.model.UserTrackerPath fetchUserTrackerPath(
+		long userTrackerPathId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userTrackerPathLocalService.fetchUserTrackerPath(userTrackerPathId);
+	}
+
 	/**
 	* Returns the user tracker path with the primary key.
 	*
@@ -255,11 +262,26 @@ public class UserTrackerPathLocalServiceWrapper
 			start, end);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public UserTrackerPathLocalService getWrappedUserTrackerPathLocalService() {
 		return _userTrackerPathLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedUserTrackerPathLocalService(
+		UserTrackerPathLocalService userTrackerPathLocalService) {
+		_userTrackerPathLocalService = userTrackerPathLocalService;
+	}
+
+	public UserTrackerPathLocalService getWrappedService() {
+		return _userTrackerPathLocalService;
+	}
+
+	public void setWrappedService(
 		UserTrackerPathLocalService userTrackerPathLocalService) {
 		_userTrackerPathLocalService = userTrackerPathLocalService;
 	}

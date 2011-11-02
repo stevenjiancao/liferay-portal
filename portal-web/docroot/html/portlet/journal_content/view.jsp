@@ -346,6 +346,7 @@ boolean showIconsActions = themeDisplay.isSignedIn() && (showEditArticleIcon || 
 					image="configuration"
 					message="select-web-content"
 					method="get"
+					onClick="<%= portletDisplay.getURLConfigurationJS() %>"
 					url="<%= portletDisplay.getURLConfiguration() %>"
 				/>
 			</c:if>

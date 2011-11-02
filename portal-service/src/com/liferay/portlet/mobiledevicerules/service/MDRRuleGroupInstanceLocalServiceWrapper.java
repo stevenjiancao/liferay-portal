@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.mobiledevicerules.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link MDRRuleGroupInstanceLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.mobiledevicerules.service;
  * @generated
  */
 public class MDRRuleGroupInstanceLocalServiceWrapper
-	implements MDRRuleGroupInstanceLocalService {
+	implements MDRRuleGroupInstanceLocalService,
+		ServiceWrapper<MDRRuleGroupInstanceLocalService> {
 	public MDRRuleGroupInstanceLocalServiceWrapper(
 		MDRRuleGroupInstanceLocalService mdrRuleGroupInstanceLocalService) {
 		_mdrRuleGroupInstanceLocalService = mdrRuleGroupInstanceLocalService;
@@ -149,6 +152,12 @@ public class MDRRuleGroupInstanceLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _mdrRuleGroupInstanceLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.mobiledevicerules.model.MDRRuleGroupInstance fetchMDRRuleGroupInstance(
+		long ruleGroupInstanceId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _mdrRuleGroupInstanceLocalService.fetchMDRRuleGroupInstance(ruleGroupInstanceId);
 	}
 
 	/**
@@ -277,6 +286,16 @@ public class MDRRuleGroupInstanceLocalServiceWrapper
 			className, classPK, ruleGroupId, priority, serviceContext);
 	}
 
+	public com.liferay.portlet.mobiledevicerules.model.MDRRuleGroupInstance addRuleGroupInstance(
+		long groupId, java.lang.String className, long classPK,
+		long ruleGroupId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _mdrRuleGroupInstanceLocalService.addRuleGroupInstance(groupId,
+			className, classPK, ruleGroupId, serviceContext);
+	}
+
 	public void deleteRuleGroupInstance(long ruleGroupInstanceId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		_mdrRuleGroupInstanceLocalService.deleteRuleGroupInstance(ruleGroupInstanceId);
@@ -362,11 +381,26 @@ public class MDRRuleGroupInstanceLocalServiceWrapper
 			priority);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public MDRRuleGroupInstanceLocalService getWrappedMDRRuleGroupInstanceLocalService() {
 		return _mdrRuleGroupInstanceLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedMDRRuleGroupInstanceLocalService(
+		MDRRuleGroupInstanceLocalService mdrRuleGroupInstanceLocalService) {
+		_mdrRuleGroupInstanceLocalService = mdrRuleGroupInstanceLocalService;
+	}
+
+	public MDRRuleGroupInstanceLocalService getWrappedService() {
+		return _mdrRuleGroupInstanceLocalService;
+	}
+
+	public void setWrappedService(
 		MDRRuleGroupInstanceLocalService mdrRuleGroupInstanceLocalService) {
 		_mdrRuleGroupInstanceLocalService = mdrRuleGroupInstanceLocalService;
 	}

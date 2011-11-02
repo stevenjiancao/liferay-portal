@@ -198,15 +198,21 @@ request.setAttribute("record_set_action.jsp-selRecordSet", selRecordSet);
 			document.<portlet:namespace />fm.<portlet:namespace />recordSetId.value = recordSetId;
 			document.<portlet:namespace />fm.<portlet:namespace />detailDDMTemplateId.value = "";
 			document.<portlet:namespace />fm.<portlet:namespace />listDDMTemplateId.value = "";
-			document.<portlet:namespace />fm.<portlet:namespace />editable.value = "";
 
 			A.one('.displaying-record-set-id-holder').show();
 			A.one('.displaying-help-message-holder').hide();
 
 			var displayRecordSetId = A.one('.displaying-record-set-id');
 
-			displayRecordSetId.set('innerHTML', recordSetName + ' (<%= LanguageUtil.get(pageContext, "modified") %>)');
+			displayRecordSetId.html(recordSetName + ' (<liferay-ui:message key="modified" />)');
+
 			displayRecordSetId.addClass('modified');
+
+			var dialog = Liferay.Util.getWindow();
+
+			if (dialog) {
+				dialog.set('title', recordSetName + ' - <liferay-ui:message key="configuration" />');
+			}
 		},
 		['aui-base']
 	);

@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class WorkflowInstanceLinkLocalServiceWrapper
-	implements WorkflowInstanceLinkLocalService {
+	implements WorkflowInstanceLinkLocalService,
+		ServiceWrapper<WorkflowInstanceLinkLocalService> {
 	public WorkflowInstanceLinkLocalServiceWrapper(
 		WorkflowInstanceLinkLocalService workflowInstanceLinkLocalService) {
 		_workflowInstanceLinkLocalService = workflowInstanceLinkLocalService;
@@ -149,6 +150,12 @@ public class WorkflowInstanceLinkLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _workflowInstanceLinkLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.WorkflowInstanceLink fetchWorkflowInstanceLink(
+		long workflowInstanceLinkId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _workflowInstanceLinkLocalService.fetchWorkflowInstanceLink(workflowInstanceLinkId);
 	}
 
 	/**
@@ -337,11 +344,26 @@ public class WorkflowInstanceLinkLocalServiceWrapper
 			className, oldClassPK, newClassPK);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public WorkflowInstanceLinkLocalService getWrappedWorkflowInstanceLinkLocalService() {
 		return _workflowInstanceLinkLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedWorkflowInstanceLinkLocalService(
+		WorkflowInstanceLinkLocalService workflowInstanceLinkLocalService) {
+		_workflowInstanceLinkLocalService = workflowInstanceLinkLocalService;
+	}
+
+	public WorkflowInstanceLinkLocalService getWrappedService() {
+		return _workflowInstanceLinkLocalService;
+	}
+
+	public void setWrappedService(
 		WorkflowInstanceLinkLocalService workflowInstanceLinkLocalService) {
 		_workflowInstanceLinkLocalService = workflowInstanceLinkLocalService;
 	}

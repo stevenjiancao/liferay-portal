@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.journal.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link JournalFeedLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.journal.service;
  * @see       JournalFeedLocalService
  * @generated
  */
-public class JournalFeedLocalServiceWrapper implements JournalFeedLocalService {
+public class JournalFeedLocalServiceWrapper implements JournalFeedLocalService,
+	ServiceWrapper<JournalFeedLocalService> {
 	public JournalFeedLocalServiceWrapper(
 		JournalFeedLocalService journalFeedLocalService) {
 		_journalFeedLocalService = journalFeedLocalService;
@@ -147,6 +150,11 @@ public class JournalFeedLocalServiceWrapper implements JournalFeedLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _journalFeedLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.journal.model.JournalFeed fetchJournalFeed(
+		long id) throws com.liferay.portal.kernel.exception.SystemException {
+		return _journalFeedLocalService.fetchJournalFeed(id);
 	}
 
 	/**
@@ -417,11 +425,26 @@ public class JournalFeedLocalServiceWrapper implements JournalFeedLocalService {
 			targetPortletId, contentField, feedType, feedVersion, serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public JournalFeedLocalService getWrappedJournalFeedLocalService() {
 		return _journalFeedLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedJournalFeedLocalService(
+		JournalFeedLocalService journalFeedLocalService) {
+		_journalFeedLocalService = journalFeedLocalService;
+	}
+
+	public JournalFeedLocalService getWrappedService() {
+		return _journalFeedLocalService;
+	}
+
+	public void setWrappedService(
 		JournalFeedLocalService journalFeedLocalService) {
 		_journalFeedLocalService = journalFeedLocalService;
 	}

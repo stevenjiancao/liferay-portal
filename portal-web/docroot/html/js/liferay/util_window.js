@@ -34,13 +34,14 @@ AUI().add(
 		Util._openWindow = function(config) {
 			var openingWindow = config.openingWindow;
 
+			var refreshWindow = config.refreshWindow;
 			var title = config.title;
 			var uri = config.uri;
 
 			var id = config.id || A.guid();
 
 			if (config.cache === false) {
-				uri = Liferay.Util.addParams(A.guid() + '=' + (+new Date), uri);
+				uri = Liferay.Util.addParams(A.guid() + '=' + A.Lang.now(), uri);
 			}
 
 			var dialog = Window._map[id];
@@ -72,6 +73,9 @@ AUI().add(
 				A.mix(
 					dialogIframeConfig,
 					{
+						bindLoadHandler: function() {
+							Liferay.on('popupReady', A.bind(this.fire, this, 'load'));
+						},
 						id: id,
 						iframeId: id,
 						uri: uri
@@ -87,6 +91,7 @@ AUI().add(
 				Window._map[id] = dialog;
 
 				dialog._opener = openingWindow;
+				dialog._refreshWindow = refreshWindow;
 
 				dialog.after(
 					'destroy',
@@ -97,18 +102,23 @@ AUI().add(
 					}
 				);
 
-				dialog.iframe.after(
-					'load',
+				Liferay.after(
+					'popupReady',
 					function(event) {
-						var dialogIframeNode = event.currentTarget.node;
+						if (event.windowName == id) {
+							var dialogIframeNode = event.currentTarget.node;
 
-						Util.afterIframeLoaded(event);
+							event.dialog = dialog;
+							event.details[0].dialog = dialog;
 
-						var dialogUtil = dialogIframeNode.get('contentWindow.Liferay.Util');
+							Util.afterIframeLoaded(event);
 
-						dialogUtil.Window._opener = openingWindow;
+							var dialogUtil = event.win.Liferay.Util;
 
-						dialogUtil.Window._name = id;
+							dialogUtil.Window._opener = openingWindow;
+
+							dialogUtil.Window._name = id;
+						}
 					}
 				);
 

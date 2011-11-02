@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       PhoneLocalService
  * @generated
  */
-public class PhoneLocalServiceWrapper implements PhoneLocalService {
+public class PhoneLocalServiceWrapper implements PhoneLocalService,
+	ServiceWrapper<PhoneLocalService> {
 	public PhoneLocalServiceWrapper(PhoneLocalService phoneLocalService) {
 		_phoneLocalService = phoneLocalService;
 	}
@@ -144,6 +145,11 @@ public class PhoneLocalServiceWrapper implements PhoneLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _phoneLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.Phone fetchPhone(long phoneId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _phoneLocalService.fetchPhone(phoneId);
 	}
 
 	/**
@@ -275,11 +281,25 @@ public class PhoneLocalServiceWrapper implements PhoneLocalService {
 			typeId, primary);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public PhoneLocalService getWrappedPhoneLocalService() {
 		return _phoneLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedPhoneLocalService(PhoneLocalService phoneLocalService) {
+		_phoneLocalService = phoneLocalService;
+	}
+
+	public PhoneLocalService getWrappedService() {
+		return _phoneLocalService;
+	}
+
+	public void setWrappedService(PhoneLocalService phoneLocalService) {
 		_phoneLocalService = phoneLocalService;
 	}
 

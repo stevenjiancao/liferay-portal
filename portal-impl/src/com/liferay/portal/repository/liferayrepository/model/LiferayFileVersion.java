@@ -64,21 +64,11 @@ public class LiferayFileVersion extends LiferayModel implements FileVersion {
 	public InputStream getContentStream(boolean incrementCounter)
 		throws PortalException, SystemException {
 
-		return DLFileEntryLocalServiceUtil.getFileAsStream(
-			PrincipalThreadLocal.getUserId(), _dlFileVersion.getFileEntryId(),
-			_dlFileVersion.getVersion(), incrementCounter);
+		return _dlFileVersion.getContentStream(incrementCounter);
 	}
 
 	public Date getCreateDate() {
 		return _dlFileVersion.getCreateDate();
-	}
-
-	public long getCustom1ImageId() {
-		return _dlFileVersion.getCustom1ImageId();
-	}
-
-	public long getCustom2ImageId() {
-		return _dlFileVersion.getCustom2ImageId();
 	}
 
 	public String getDescription() {
@@ -126,14 +116,6 @@ public class LiferayFileVersion extends LiferayModel implements FileVersion {
 		return _dlFileVersion.getIcon();
 	}
 
-	public String getImageType() {
-		return _dlFileVersion.getImageType();
-	}
-
-	public long getLargeImageId() {
-		return _dlFileVersion.getLargeImageId();
-	}
-
 	public String getMimeType() {
 		return _dlFileVersion.getMimeType();
 	}
@@ -170,10 +152,6 @@ public class LiferayFileVersion extends LiferayModel implements FileVersion {
 
 	public long getSize() {
 		return _dlFileVersion.getSize();
-	}
-
-	public long getSmallImageId() {
-		return _dlFileVersion.getSmallImageId();
 	}
 
 	public int getStatus() {

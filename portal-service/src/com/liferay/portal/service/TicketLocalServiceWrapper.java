@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       TicketLocalService
  * @generated
  */
-public class TicketLocalServiceWrapper implements TicketLocalService {
+public class TicketLocalServiceWrapper implements TicketLocalService,
+	ServiceWrapper<TicketLocalService> {
 	public TicketLocalServiceWrapper(TicketLocalService ticketLocalService) {
 		_ticketLocalService = ticketLocalService;
 	}
@@ -146,6 +147,11 @@ public class TicketLocalServiceWrapper implements TicketLocalService {
 		return _ticketLocalService.dynamicQueryCount(dynamicQuery);
 	}
 
+	public com.liferay.portal.model.Ticket fetchTicket(long ticketId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ticketLocalService.fetchTicket(ticketId);
+	}
+
 	/**
 	* Returns the ticket with the primary key.
 	*
@@ -261,12 +267,26 @@ public class TicketLocalServiceWrapper implements TicketLocalService {
 		return _ticketLocalService.getTicket(key);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public TicketLocalService getWrappedTicketLocalService() {
 		return _ticketLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedTicketLocalService(
 		TicketLocalService ticketLocalService) {
+		_ticketLocalService = ticketLocalService;
+	}
+
+	public TicketLocalService getWrappedService() {
+		return _ticketLocalService;
+	}
+
+	public void setWrappedService(TicketLocalService ticketLocalService) {
 		_ticketLocalService = ticketLocalService;
 	}
 

@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.documentlibrary.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link DLFileRankLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.documentlibrary.service;
  * @see       DLFileRankLocalService
  * @generated
  */
-public class DLFileRankLocalServiceWrapper implements DLFileRankLocalService {
+public class DLFileRankLocalServiceWrapper implements DLFileRankLocalService,
+	ServiceWrapper<DLFileRankLocalService> {
 	public DLFileRankLocalServiceWrapper(
 		DLFileRankLocalService dlFileRankLocalService) {
 		_dlFileRankLocalService = dlFileRankLocalService;
@@ -147,6 +150,12 @@ public class DLFileRankLocalServiceWrapper implements DLFileRankLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _dlFileRankLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.documentlibrary.model.DLFileRank fetchDLFileRank(
+		long fileRankId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dlFileRankLocalService.fetchDLFileRank(fileRankId);
 	}
 
 	/**
@@ -295,12 +304,26 @@ public class DLFileRankLocalServiceWrapper implements DLFileRankLocalService {
 			userId, fileEntryId, serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public DLFileRankLocalService getWrappedDLFileRankLocalService() {
 		return _dlFileRankLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedDLFileRankLocalService(
 		DLFileRankLocalService dlFileRankLocalService) {
+		_dlFileRankLocalService = dlFileRankLocalService;
+	}
+
+	public DLFileRankLocalService getWrappedService() {
+		return _dlFileRankLocalService;
+	}
+
+	public void setWrappedService(DLFileRankLocalService dlFileRankLocalService) {
 		_dlFileRankLocalService = dlFileRankLocalService;
 	}
 

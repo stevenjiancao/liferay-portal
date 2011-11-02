@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.social.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link SocialActivityAchievementLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.social.service;
  * @generated
  */
 public class SocialActivityAchievementLocalServiceWrapper
-	implements SocialActivityAchievementLocalService {
+	implements SocialActivityAchievementLocalService,
+		ServiceWrapper<SocialActivityAchievementLocalService> {
 	public SocialActivityAchievementLocalServiceWrapper(
 		SocialActivityAchievementLocalService socialActivityAchievementLocalService) {
 		_socialActivityAchievementLocalService = socialActivityAchievementLocalService;
@@ -151,6 +154,12 @@ public class SocialActivityAchievementLocalServiceWrapper
 		return _socialActivityAchievementLocalService.dynamicQueryCount(dynamicQuery);
 	}
 
+	public com.liferay.portlet.social.model.SocialActivityAchievement fetchSocialActivityAchievement(
+		long activityAchievementId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _socialActivityAchievementLocalService.fetchSocialActivityAchievement(activityAchievementId);
+	}
+
 	/**
 	* Returns the social activity achievement with the primary key.
 	*
@@ -250,11 +259,34 @@ public class SocialActivityAchievementLocalServiceWrapper
 		_socialActivityAchievementLocalService.setBeanIdentifier(beanIdentifier);
 	}
 
+	public void addActivityAchievement(long userId, long groupId,
+		com.liferay.portlet.social.model.SocialAchievement achievement)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_socialActivityAchievementLocalService.addActivityAchievement(userId,
+			groupId, achievement);
+	}
+
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public SocialActivityAchievementLocalService getWrappedSocialActivityAchievementLocalService() {
 		return _socialActivityAchievementLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedSocialActivityAchievementLocalService(
+		SocialActivityAchievementLocalService socialActivityAchievementLocalService) {
+		_socialActivityAchievementLocalService = socialActivityAchievementLocalService;
+	}
+
+	public SocialActivityAchievementLocalService getWrappedService() {
+		return _socialActivityAchievementLocalService;
+	}
+
+	public void setWrappedService(
 		SocialActivityAchievementLocalService socialActivityAchievementLocalService) {
 		_socialActivityAchievementLocalService = socialActivityAchievementLocalService;
 	}

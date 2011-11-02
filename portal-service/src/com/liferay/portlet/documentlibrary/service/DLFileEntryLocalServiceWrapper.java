@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.documentlibrary.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link DLFileEntryLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.documentlibrary.service;
  * @see       DLFileEntryLocalService
  * @generated
  */
-public class DLFileEntryLocalServiceWrapper implements DLFileEntryLocalService {
+public class DLFileEntryLocalServiceWrapper implements DLFileEntryLocalService,
+	ServiceWrapper<DLFileEntryLocalService> {
 	public DLFileEntryLocalServiceWrapper(
 		DLFileEntryLocalService dlFileEntryLocalService) {
 		_dlFileEntryLocalService = dlFileEntryLocalService;
@@ -147,6 +150,12 @@ public class DLFileEntryLocalServiceWrapper implements DLFileEntryLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _dlFileEntryLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.documentlibrary.model.DLFileEntry fetchDLFileEntry(
+		long fileEntryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dlFileEntryLocalService.fetchDLFileEntry(fileEntryId);
 	}
 
 	/**
@@ -583,11 +592,26 @@ public class DLFileEntryLocalServiceWrapper implements DLFileEntryLocalService {
 			lockUuid);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public DLFileEntryLocalService getWrappedDLFileEntryLocalService() {
 		return _dlFileEntryLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedDLFileEntryLocalService(
+		DLFileEntryLocalService dlFileEntryLocalService) {
+		_dlFileEntryLocalService = dlFileEntryLocalService;
+	}
+
+	public DLFileEntryLocalService getWrappedService() {
+		return _dlFileEntryLocalService;
+	}
+
+	public void setWrappedService(
 		DLFileEntryLocalService dlFileEntryLocalService) {
 		_dlFileEntryLocalService = dlFileEntryLocalService;
 	}

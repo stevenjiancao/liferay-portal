@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       EmailAddressLocalService
  * @generated
  */
-public class EmailAddressLocalServiceWrapper implements EmailAddressLocalService {
+public class EmailAddressLocalServiceWrapper implements EmailAddressLocalService,
+	ServiceWrapper<EmailAddressLocalService> {
 	public EmailAddressLocalServiceWrapper(
 		EmailAddressLocalService emailAddressLocalService) {
 		_emailAddressLocalService = emailAddressLocalService;
@@ -147,6 +148,12 @@ public class EmailAddressLocalServiceWrapper implements EmailAddressLocalService
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _emailAddressLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.EmailAddress fetchEmailAddress(
+		long emailAddressId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _emailAddressLocalService.fetchEmailAddress(emailAddressId);
 	}
 
 	/**
@@ -282,11 +289,26 @@ public class EmailAddressLocalServiceWrapper implements EmailAddressLocalService
 			address, typeId, primary);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public EmailAddressLocalService getWrappedEmailAddressLocalService() {
 		return _emailAddressLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedEmailAddressLocalService(
+		EmailAddressLocalService emailAddressLocalService) {
+		_emailAddressLocalService = emailAddressLocalService;
+	}
+
+	public EmailAddressLocalService getWrappedService() {
+		return _emailAddressLocalService;
+	}
+
+	public void setWrappedService(
 		EmailAddressLocalService emailAddressLocalService) {
 		_emailAddressLocalService = emailAddressLocalService;
 	}

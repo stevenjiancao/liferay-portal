@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.journal.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link JournalArticleResourceLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.journal.service;
  * @generated
  */
 public class JournalArticleResourceLocalServiceWrapper
-	implements JournalArticleResourceLocalService {
+	implements JournalArticleResourceLocalService,
+		ServiceWrapper<JournalArticleResourceLocalService> {
 	public JournalArticleResourceLocalServiceWrapper(
 		JournalArticleResourceLocalService journalArticleResourceLocalService) {
 		_journalArticleResourceLocalService = journalArticleResourceLocalService;
@@ -149,6 +152,12 @@ public class JournalArticleResourceLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _journalArticleResourceLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.journal.model.JournalArticleResource fetchJournalArticleResource(
+		long resourcePrimKey)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _journalArticleResourceLocalService.fetchJournalArticleResource(resourcePrimKey);
 	}
 
 	/**
@@ -301,11 +310,26 @@ public class JournalArticleResourceLocalServiceWrapper
 		return _journalArticleResourceLocalService.getArticleResources(groupId);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public JournalArticleResourceLocalService getWrappedJournalArticleResourceLocalService() {
 		return _journalArticleResourceLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedJournalArticleResourceLocalService(
+		JournalArticleResourceLocalService journalArticleResourceLocalService) {
+		_journalArticleResourceLocalService = journalArticleResourceLocalService;
+	}
+
+	public JournalArticleResourceLocalService getWrappedService() {
+		return _journalArticleResourceLocalService;
+	}
+
+	public void setWrappedService(
 		JournalArticleResourceLocalService journalArticleResourceLocalService) {
 		_journalArticleResourceLocalService = journalArticleResourceLocalService;
 	}

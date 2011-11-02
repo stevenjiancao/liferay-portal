@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       ReleaseLocalService
  * @generated
  */
-public class ReleaseLocalServiceWrapper implements ReleaseLocalService {
+public class ReleaseLocalServiceWrapper implements ReleaseLocalService,
+	ServiceWrapper<ReleaseLocalService> {
 	public ReleaseLocalServiceWrapper(ReleaseLocalService releaseLocalService) {
 		_releaseLocalService = releaseLocalService;
 	}
@@ -144,6 +145,11 @@ public class ReleaseLocalServiceWrapper implements ReleaseLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _releaseLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.Release fetchRelease(long releaseId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _releaseLocalService.fetchRelease(releaseId);
 	}
 
 	/**
@@ -273,12 +279,26 @@ public class ReleaseLocalServiceWrapper implements ReleaseLocalService {
 			buildDate, verified);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ReleaseLocalService getWrappedReleaseLocalService() {
 		return _releaseLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedReleaseLocalService(
 		ReleaseLocalService releaseLocalService) {
+		_releaseLocalService = releaseLocalService;
+	}
+
+	public ReleaseLocalService getWrappedService() {
+		return _releaseLocalService;
+	}
+
+	public void setWrappedService(ReleaseLocalService releaseLocalService) {
 		_releaseLocalService = releaseLocalService;
 	}
 

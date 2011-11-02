@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.softwarecatalog.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link SCFrameworkVersionLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.softwarecatalog.service;
  * @generated
  */
 public class SCFrameworkVersionLocalServiceWrapper
-	implements SCFrameworkVersionLocalService {
+	implements SCFrameworkVersionLocalService,
+		ServiceWrapper<SCFrameworkVersionLocalService> {
 	public SCFrameworkVersionLocalServiceWrapper(
 		SCFrameworkVersionLocalService scFrameworkVersionLocalService) {
 		_scFrameworkVersionLocalService = scFrameworkVersionLocalService;
@@ -149,6 +152,12 @@ public class SCFrameworkVersionLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _scFrameworkVersionLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.softwarecatalog.model.SCFrameworkVersion fetchSCFrameworkVersion(
+		long frameworkVersionId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _scFrameworkVersionLocalService.fetchSCFrameworkVersion(frameworkVersionId);
 	}
 
 	/**
@@ -364,11 +373,26 @@ public class SCFrameworkVersionLocalServiceWrapper
 			name, url, active, priority);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public SCFrameworkVersionLocalService getWrappedSCFrameworkVersionLocalService() {
 		return _scFrameworkVersionLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedSCFrameworkVersionLocalService(
+		SCFrameworkVersionLocalService scFrameworkVersionLocalService) {
+		_scFrameworkVersionLocalService = scFrameworkVersionLocalService;
+	}
+
+	public SCFrameworkVersionLocalService getWrappedService() {
+		return _scFrameworkVersionLocalService;
+	}
+
+	public void setWrappedService(
 		SCFrameworkVersionLocalService scFrameworkVersionLocalService) {
 		_scFrameworkVersionLocalService = scFrameworkVersionLocalService;
 	}

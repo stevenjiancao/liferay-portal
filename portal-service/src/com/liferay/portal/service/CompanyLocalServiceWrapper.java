@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       CompanyLocalService
  * @generated
  */
-public class CompanyLocalServiceWrapper implements CompanyLocalService {
+public class CompanyLocalServiceWrapper implements CompanyLocalService,
+	ServiceWrapper<CompanyLocalService> {
 	public CompanyLocalServiceWrapper(CompanyLocalService companyLocalService) {
 		_companyLocalService = companyLocalService;
 	}
@@ -144,6 +145,11 @@ public class CompanyLocalServiceWrapper implements CompanyLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _companyLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.Company fetchCompany(long companyId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _companyLocalService.fetchCompany(companyId);
 	}
 
 	/**
@@ -342,9 +348,9 @@ public class CompanyLocalServiceWrapper implements CompanyLocalService {
 	with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.liferay.portal.model.Company fetchCompany(long companyId)
+	public com.liferay.portal.model.Company fetchCompanyById(long companyId)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return _companyLocalService.fetchCompany(companyId);
+		return _companyLocalService.fetchCompanyById(companyId);
 	}
 
 	/**
@@ -727,12 +733,26 @@ public class CompanyLocalServiceWrapper implements CompanyLocalService {
 			sendPassword, strangers, strangersWithMx, strangersVerify, siteLogo);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public CompanyLocalService getWrappedCompanyLocalService() {
 		return _companyLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedCompanyLocalService(
 		CompanyLocalService companyLocalService) {
+		_companyLocalService = companyLocalService;
+	}
+
+	public CompanyLocalService getWrappedService() {
+		return _companyLocalService;
+	}
+
+	public void setWrappedService(CompanyLocalService companyLocalService) {
 		_companyLocalService = companyLocalService;
 	}
 

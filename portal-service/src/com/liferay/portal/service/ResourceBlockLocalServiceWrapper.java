@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class ResourceBlockLocalServiceWrapper
-	implements ResourceBlockLocalService {
+	implements ResourceBlockLocalService,
+		ServiceWrapper<ResourceBlockLocalService> {
 	public ResourceBlockLocalServiceWrapper(
 		ResourceBlockLocalService resourceBlockLocalService) {
 		_resourceBlockLocalService = resourceBlockLocalService;
@@ -148,6 +149,12 @@ public class ResourceBlockLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _resourceBlockLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.ResourceBlock fetchResourceBlock(
+		long resourceBlockId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _resourceBlockLocalService.fetchResourceBlock(resourceBlockId);
 	}
 
 	/**
@@ -702,11 +709,26 @@ public class ResourceBlockLocalServiceWrapper
 			primKey);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ResourceBlockLocalService getWrappedResourceBlockLocalService() {
 		return _resourceBlockLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedResourceBlockLocalService(
+		ResourceBlockLocalService resourceBlockLocalService) {
+		_resourceBlockLocalService = resourceBlockLocalService;
+	}
+
+	public ResourceBlockLocalService getWrappedService() {
+		return _resourceBlockLocalService;
+	}
+
+	public void setWrappedService(
 		ResourceBlockLocalService resourceBlockLocalService) {
 		_resourceBlockLocalService = resourceBlockLocalService;
 	}

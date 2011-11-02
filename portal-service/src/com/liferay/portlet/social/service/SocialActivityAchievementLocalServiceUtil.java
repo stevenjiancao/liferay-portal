@@ -161,6 +161,12 @@ public class SocialActivityAchievementLocalServiceUtil {
 		return getService().dynamicQueryCount(dynamicQuery);
 	}
 
+	public static com.liferay.portlet.social.model.SocialActivityAchievement fetchSocialActivityAchievement(
+		long activityAchievementId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().fetchSocialActivityAchievement(activityAchievementId);
+	}
+
 	/**
 	* Returns the social activity achievement with the primary key.
 	*
@@ -259,6 +265,13 @@ public class SocialActivityAchievementLocalServiceUtil {
 	*/
 	public static void setBeanIdentifier(java.lang.String beanIdentifier) {
 		getService().setBeanIdentifier(beanIdentifier);
+	}
+
+	public static void addActivityAchievement(long userId, long groupId,
+		com.liferay.portlet.social.model.SocialAchievement achievement)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().addActivityAchievement(userId, groupId, achievement);
 	}
 
 	public static SocialActivityAchievementLocalService getService() {

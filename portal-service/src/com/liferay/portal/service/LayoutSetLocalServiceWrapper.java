@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       LayoutSetLocalService
  * @generated
  */
-public class LayoutSetLocalServiceWrapper implements LayoutSetLocalService {
+public class LayoutSetLocalServiceWrapper implements LayoutSetLocalService,
+	ServiceWrapper<LayoutSetLocalService> {
 	public LayoutSetLocalServiceWrapper(
 		LayoutSetLocalService layoutSetLocalService) {
 		_layoutSetLocalService = layoutSetLocalService;
@@ -145,6 +146,11 @@ public class LayoutSetLocalServiceWrapper implements LayoutSetLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _layoutSetLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.LayoutSet fetchLayoutSet(long layoutSetId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _layoutSetLocalService.fetchLayoutSet(layoutSetId);
 	}
 
 	/**
@@ -297,6 +303,14 @@ public class LayoutSetLocalServiceWrapper implements LayoutSetLocalService {
 		_layoutSetLocalService.updateLogo(groupId, privateLayout, logo, is);
 	}
 
+	public void updateLogo(long groupId, boolean privateLayout, boolean logo,
+		java.io.InputStream is, boolean cleanUpStream)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_layoutSetLocalService.updateLogo(groupId, privateLayout, logo, is,
+			cleanUpStream);
+	}
+
 	public void updateLookAndFeel(long groupId, java.lang.String themeId,
 		java.lang.String colorSchemeId, java.lang.String css, boolean wapTheme)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -337,12 +351,26 @@ public class LayoutSetLocalServiceWrapper implements LayoutSetLocalService {
 			virtualHostname);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public LayoutSetLocalService getWrappedLayoutSetLocalService() {
 		return _layoutSetLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedLayoutSetLocalService(
 		LayoutSetLocalService layoutSetLocalService) {
+		_layoutSetLocalService = layoutSetLocalService;
+	}
+
+	public LayoutSetLocalService getWrappedService() {
+		return _layoutSetLocalService;
+	}
+
+	public void setWrappedService(LayoutSetLocalService layoutSetLocalService) {
 		_layoutSetLocalService = layoutSetLocalService;
 	}
 

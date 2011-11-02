@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.softwarecatalog.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link SCProductVersionLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.softwarecatalog.service;
  * @generated
  */
 public class SCProductVersionLocalServiceWrapper
-	implements SCProductVersionLocalService {
+	implements SCProductVersionLocalService,
+		ServiceWrapper<SCProductVersionLocalService> {
 	public SCProductVersionLocalServiceWrapper(
 		SCProductVersionLocalService scProductVersionLocalService) {
 		_scProductVersionLocalService = scProductVersionLocalService;
@@ -149,6 +152,12 @@ public class SCProductVersionLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _scProductVersionLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.softwarecatalog.model.SCProductVersion fetchSCProductVersion(
+		long productVersionId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _scProductVersionLocalService.fetchSCProductVersion(productVersionId);
 	}
 
 	/**
@@ -318,11 +327,26 @@ public class SCProductVersionLocalServiceWrapper
 			testDirectDownloadURL, repoStoreArtifact, frameworkVersionIds);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public SCProductVersionLocalService getWrappedSCProductVersionLocalService() {
 		return _scProductVersionLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedSCProductVersionLocalService(
+		SCProductVersionLocalService scProductVersionLocalService) {
+		_scProductVersionLocalService = scProductVersionLocalService;
+	}
+
+	public SCProductVersionLocalService getWrappedService() {
+		return _scProductVersionLocalService;
+	}
+
+	public void setWrappedService(
 		SCProductVersionLocalService scProductVersionLocalService) {
 		_scProductVersionLocalService = scProductVersionLocalService;
 	}

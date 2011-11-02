@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.bookmarks.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link BookmarksEntryLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.bookmarks.service;
  * @generated
  */
 public class BookmarksEntryLocalServiceWrapper
-	implements BookmarksEntryLocalService {
+	implements BookmarksEntryLocalService,
+		ServiceWrapper<BookmarksEntryLocalService> {
 	public BookmarksEntryLocalServiceWrapper(
 		BookmarksEntryLocalService bookmarksEntryLocalService) {
 		_bookmarksEntryLocalService = bookmarksEntryLocalService;
@@ -148,6 +151,12 @@ public class BookmarksEntryLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _bookmarksEntryLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.bookmarks.model.BookmarksEntry fetchBookmarksEntry(
+		long entryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _bookmarksEntryLocalService.fetchBookmarksEntry(entryId);
 	}
 
 	/**
@@ -384,11 +393,26 @@ public class BookmarksEntryLocalServiceWrapper
 			groupId, folderId, name, url, description, serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public BookmarksEntryLocalService getWrappedBookmarksEntryLocalService() {
 		return _bookmarksEntryLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedBookmarksEntryLocalService(
+		BookmarksEntryLocalService bookmarksEntryLocalService) {
+		_bookmarksEntryLocalService = bookmarksEntryLocalService;
+	}
+
+	public BookmarksEntryLocalService getWrappedService() {
+		return _bookmarksEntryLocalService;
+	}
+
+	public void setWrappedService(
 		BookmarksEntryLocalService bookmarksEntryLocalService) {
 		_bookmarksEntryLocalService = bookmarksEntryLocalService;
 	}

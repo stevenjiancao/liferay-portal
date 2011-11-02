@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class ResourceActionLocalServiceWrapper
-	implements ResourceActionLocalService {
+	implements ResourceActionLocalService,
+		ServiceWrapper<ResourceActionLocalService> {
 	public ResourceActionLocalServiceWrapper(
 		ResourceActionLocalService resourceActionLocalService) {
 		_resourceActionLocalService = resourceActionLocalService;
@@ -148,6 +149,12 @@ public class ResourceActionLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _resourceActionLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.ResourceAction fetchResourceAction(
+		long resourceActionId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _resourceActionLocalService.fetchResourceAction(resourceActionId);
 	}
 
 	/**
@@ -282,11 +289,26 @@ public class ResourceActionLocalServiceWrapper
 		return _resourceActionLocalService.getResourceActions(name);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ResourceActionLocalService getWrappedResourceActionLocalService() {
 		return _resourceActionLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedResourceActionLocalService(
+		ResourceActionLocalService resourceActionLocalService) {
+		_resourceActionLocalService = resourceActionLocalService;
+	}
+
+	public ResourceActionLocalService getWrappedService() {
+		return _resourceActionLocalService;
+	}
+
+	public void setWrappedService(
 		ResourceActionLocalService resourceActionLocalService) {
 		_resourceActionLocalService = resourceActionLocalService;
 	}

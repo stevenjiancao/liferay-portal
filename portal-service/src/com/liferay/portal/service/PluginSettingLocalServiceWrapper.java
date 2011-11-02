@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class PluginSettingLocalServiceWrapper
-	implements PluginSettingLocalService {
+	implements PluginSettingLocalService,
+		ServiceWrapper<PluginSettingLocalService> {
 	public PluginSettingLocalServiceWrapper(
 		PluginSettingLocalService pluginSettingLocalService) {
 		_pluginSettingLocalService = pluginSettingLocalService;
@@ -148,6 +149,12 @@ public class PluginSettingLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _pluginSettingLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.PluginSetting fetchPluginSetting(
+		long pluginSettingId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _pluginSettingLocalService.fetchPluginSetting(pluginSettingId);
 	}
 
 	/**
@@ -278,11 +285,26 @@ public class PluginSettingLocalServiceWrapper
 			pluginId, pluginType, roles, active);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public PluginSettingLocalService getWrappedPluginSettingLocalService() {
 		return _pluginSettingLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedPluginSettingLocalService(
+		PluginSettingLocalService pluginSettingLocalService) {
+		_pluginSettingLocalService = pluginSettingLocalService;
+	}
+
+	public PluginSettingLocalService getWrappedService() {
+		return _pluginSettingLocalService;
+	}
+
+	public void setWrappedService(
 		PluginSettingLocalService pluginSettingLocalService) {
 		_pluginSettingLocalService = pluginSettingLocalService;
 	}

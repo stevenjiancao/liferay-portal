@@ -33,6 +33,8 @@ String rootNodeName = (String)request.getAttribute("edit_pages.jsp-rootNodeName"
 
 PortletURL redirectURL = (PortletURL)request.getAttribute("edit_pages.jsp-redirectURL");
 
+String closeRedirect = ParamUtil.getString(request, "closeRedirect");
+
 int pagesCount = 0;
 
 if (selGroup.isLayoutSetPrototype()) {
@@ -152,7 +154,7 @@ String[][] categorySections = {mainSections};
 
 								Liferay.Util.focusFormField(content.one('input:text'));
 							},
-							icon: 'circle-plus',
+							icon: 'add',
 							label: '<liferay-ui:message key="add-page" />'
 						},
 					</c:if>
@@ -219,7 +221,7 @@ String[][] categorySections = {mainSections};
 
 								exportPopup.io.start();
 							},
-							icon: 'arrowthick-1-b',
+							icon: 'export',
 							label: '<liferay-ui:message key="export" />'
 						},
 						{
@@ -292,6 +294,7 @@ String[][] categorySections = {mainSections};
 <aui:form action="<%= editLayoutSetURL %>" cssClass="edit-layoutset-form" method="post" name="fm" onSubmit='<%= "event.preventDefault(); " + liferayPortletResponse.getNamespace() + "saveLayoutset();" %>'>
 	<aui:input name="<%= Constants.CMD %>" type="hidden" />
 	<aui:input name="redirect" type="hidden" value="<%= redirectURL.toString() %>" />
+	<aui:input name="closeRedirect" type="hidden" value="<%= closeRedirect %>" />
 	<aui:input name="groupId" type="hidden" value="<%= groupId %>" />
 	<aui:input name="liveGroupId" type="hidden" value="<%= liveGroupId %>" />
 	<aui:input name="stagingGroupId" type="hidden" value="<%= stagingGroupId %>" />

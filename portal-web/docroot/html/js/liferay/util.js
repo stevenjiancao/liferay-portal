@@ -38,6 +38,10 @@
 
 	var REGEX_HTML_UNESCAPE = new RegExp(htmlEscapedValues.join('|'), 'gi');
 
+	var SRC_HIDE_LINK = {
+		src: 'hideLink'
+	};
+
 	var Window = {
 		ALIGN_CENTER: {
 			points: ['tc', 'tc']
@@ -346,11 +350,13 @@
 					if (!parentThemeDisplay) {
 						break;
 					}
-					else if (!parentThemeDisplay.isStatePopUp()) {
+					else if (!parentThemeDisplay.isStatePopUp() || (parentWindow == parentWindow.parent)) {
 						topWindow = parentWindow;
 
 						break;
 					}
+
+					parentWindow = parentWindow.parent;
 				}
 
 				if (!topWindow) {
@@ -664,18 +670,26 @@
 		Util,
 		'afterIframeLoaded',
 		function(event) {
-			var iframePlugin = event.currentTarget;
-
-			var iframeBody = iframePlugin.node.get('contentWindow.document.body');
+			var iframeBody = A.one(event.doc.body);
 
 			iframeBody.addClass('aui-dialog-iframe-popup');
 
 			var closeButton = iframeBody.one('.aui-button-input-cancel');
+			var hideLink = iframeBody.one('.lfr-hide-dialog');
+
+			var dialog = event.dialog;
 
 			if (closeButton) {
-				var dialog = iframePlugin.get('host');
-
 				closeButton.on('click', dialog.close, dialog);
+			}
+
+			if (hideLink) {
+				hideLink.on(
+					'click',
+					function(){
+						dialog.set('visible', false, SRC_HIDE_LINK);
+					}
+				);
 			}
 
 			var rolesSearchContainer = iframeBody.one('#rolesSearchContainerSearchContainer');
@@ -740,7 +754,7 @@
 			var totalOn = 0;
 			var inputs = A.one(form).all('input[type=checkbox]');
 
-			allBox = A.one(allBox);
+			allBox = A.one(allBox) || A.one(form).one('input[name=' + allBox + ']');
 
 			if (!isArray(name)) {
 				name = [name];
@@ -1073,6 +1087,8 @@
 
 			ddmURL.setEscapeXML(false);
 
+            ddmURL.setDoAsGroupId(config.doAsGroupId || themeDisplay.getScopeGroupId());
+
 			ddmURL.setParameter('chooseCallback', config.chooseCallback);
 			ddmURL.setParameter('saveCallback', config.saveCallback);
 			ddmURL.setParameter('scopeAvailableFields', config.availableFields);
@@ -1082,11 +1098,15 @@
 			ddmURL.setParameter('scopeTemplateMode', config.templateMode);
 			ddmURL.setParameter('scopeTemplateType', config.templateType);
 
-			if (config.showManageTemplates) {
+			if ('showGlobalScope' in config) {
+				ddmURL.setParameter('showGlobalScope', config.showGlobalScope);
+			}
+
+			if ('showManageTemplates' in config) {
 				ddmURL.setParameter('showManageTemplates', config.showManageTemplates);
 			}
 
-			if (config.showToolbar) {
+			if ('showToolbar' in config) {
 				ddmURL.setParameter('showToolbar', config.showToolbar);
 			}
 
@@ -1510,15 +1530,19 @@
 			var radioButton = A.one('#' + radioId);
 			var showBox = A.one('#' + showBoxId);
 
-			if (radioButton && showBox) {
+			if (radioButton) {
 				var checked = radioButton.get('checked');
 
-				showBox.toggle(checked);
+				if (showBox) {
+					showBox.toggle(checked);
+				}
 
 				radioButton.on(
 					'change',
 					function() {
-						showBox.show();
+						if (showBox) {
+							showBox.show();
+						}
 
 						var hideBox;
 
@@ -1529,7 +1553,9 @@
 							hideBox = A.one('#' + hideBoxIds);
 						}
 
-						hideBox.hide();
+						if (hideBox) {
+							hideBox.hide();
+						}
 					}
 				);
 			}

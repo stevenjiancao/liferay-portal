@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.social.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link SocialEquityHistoryLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.social.service;
  * @generated
  */
 public class SocialEquityHistoryLocalServiceWrapper
-	implements SocialEquityHistoryLocalService {
+	implements SocialEquityHistoryLocalService,
+		ServiceWrapper<SocialEquityHistoryLocalService> {
 	public SocialEquityHistoryLocalServiceWrapper(
 		SocialEquityHistoryLocalService socialEquityHistoryLocalService) {
 		_socialEquityHistoryLocalService = socialEquityHistoryLocalService;
@@ -151,6 +154,12 @@ public class SocialEquityHistoryLocalServiceWrapper
 		return _socialEquityHistoryLocalService.dynamicQueryCount(dynamicQuery);
 	}
 
+	public com.liferay.portlet.social.model.SocialEquityHistory fetchSocialEquityHistory(
+		long equityHistoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _socialEquityHistoryLocalService.fetchSocialEquityHistory(equityHistoryId);
+	}
+
 	/**
 	* Returns the social equity history with the primary key.
 	*
@@ -250,11 +259,26 @@ public class SocialEquityHistoryLocalServiceWrapper
 		_socialEquityHistoryLocalService.setBeanIdentifier(beanIdentifier);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public SocialEquityHistoryLocalService getWrappedSocialEquityHistoryLocalService() {
 		return _socialEquityHistoryLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedSocialEquityHistoryLocalService(
+		SocialEquityHistoryLocalService socialEquityHistoryLocalService) {
+		_socialEquityHistoryLocalService = socialEquityHistoryLocalService;
+	}
+
+	public SocialEquityHistoryLocalService getWrappedService() {
+		return _socialEquityHistoryLocalService;
+	}
+
+	public void setWrappedService(
 		SocialEquityHistoryLocalService socialEquityHistoryLocalService) {
 		_socialEquityHistoryLocalService = socialEquityHistoryLocalService;
 	}

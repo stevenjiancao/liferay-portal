@@ -31,7 +31,7 @@ public class PropsValues {
 
 	public static final String ADMIN_EMAIL_FROM_ADDRESS = PropsUtil.get(PropsKeys.ADMIN_EMAIL_FROM_ADDRESS);
 
-    public static String ADMIN_EMAIL_FROM_NAME = PropsUtil.get(PropsKeys.ADMIN_EMAIL_FROM_NAME);
+	public static String ADMIN_EMAIL_FROM_NAME = PropsUtil.get(PropsKeys.ADMIN_EMAIL_FROM_NAME);
 
 	public static final String[] ADMIN_MAIL_HOST_NAMES = StringUtil.splitLines(PropsUtil.get(PropsKeys.ADMIN_MAIL_HOST_NAMES));
 
@@ -277,6 +277,10 @@ public class PropsValues {
 
 	public static final String COMPANY_DEFAULT_HOME_URL = PropsUtil.get(PropsKeys.COMPANY_DEFAULT_HOME_URL);
 
+	public static String COMPANY_DEFAULT_LOCALE = PropsUtil.get(PropsKeys.COMPANY_DEFAULT_LOCALE);
+
+	public static String COMPANY_DEFAULT_TIME_ZONE = PropsUtil.get(PropsKeys.COMPANY_DEFAULT_TIME_ZONE);
+
 	public static String COMPANY_DEFAULT_WEB_ID = PropsUtil.get(PropsKeys.COMPANY_DEFAULT_WEB_ID);
 
 	public static final boolean COMPANY_LOGIN_PREPOPULATE_DOMAIN = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.COMPANY_LOGIN_PREPOPULATE_DOMAIN));
@@ -489,6 +493,8 @@ public class PropsValues {
 
 	public static final String DL_STORE_CMIS_SYSTEM_ROOT_DIR = PropsUtil.get(PropsKeys.DL_STORE_CMIS_SYSTEM_ROOT_DIR);
 
+	public static final String DL_STORE_FILE_SYSTEM_ROOT_DIR = PropsUtil.get(PropsKeys.DL_STORE_FILE_SYSTEM_ROOT_DIR);
+
 	public static String DL_STORE_IMPL = PropsUtil.get(PropsKeys.DL_STORE_IMPL);
 
 	public static final int DL_STORE_JCR_FETCH_DELAY = GetterUtil.getInteger(PropsUtil.get(PropsKeys.DL_STORE_JCR_FETCH_DELAY));
@@ -636,6 +642,10 @@ public class PropsValues {
 	public static boolean JAVASCRIPT_FAST_LOAD = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.JAVASCRIPT_FAST_LOAD));
 
 	public static final boolean JAVASCRIPT_LOG_ENABLED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.JAVASCRIPT_LOG_ENABLED));
+
+	public static final boolean JCR_WRAP_SESSION = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.JCR_WRAP_SESSION));
+
+	public static final String JDBC_DEFAULT_DRIVER_CLASS_NAME = PropsUtil.get(PropsKeys.JDBC_DEFAULT_DRIVER_CLASS_NAME);
 
 	public static final String JDBC_DEFAULT_LIFERAY_POOL_PROVIDER = PropsUtil.get(PropsKeys.JDBC_DEFAULT_LIFERAY_POOL_PROVIDER);
 
@@ -975,6 +985,8 @@ public class PropsValues {
 
 	public static final boolean NTLM_AUTH_ENABLED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.NTLM_AUTH_ENABLED));
 
+	public static final String NTLM_AUTH_NEGOTIATE_FLAGS = GetterUtil.getString(PropsUtil.get(PropsKeys.NTLM_AUTH_NEGOTIATE_FLAGS));
+
 	public static final String NTLM_DOMAIN = PropsUtil.get(PropsKeys.NTLM_DOMAIN);
 
 	public static final String NTLM_DOMAIN_CONTROLLER = PropsUtil.get(PropsKeys.NTLM_DOMAIN_CONTROLLER);
@@ -1038,6 +1050,8 @@ public class PropsValues {
 	public static final int OSGI_FRAMEWORK_BEGINNING_START_LEVEL = GetterUtil.getInteger(PropsUtil.get(PropsKeys.OSGI_FRAMEWORK_BEGINNING_START_LEVEL));
 
 	public static final String OSGI_FRAMEWORK_STORAGE = PropsUtil.get(PropsKeys.OSGI_FRAMEWORK_STORAGE);
+
+	public static final boolean OSGI_REGISTER_LIFERAY_SERVICES = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.OSGI_REGISTER_LIFERAY_SERVICES));
 
 	public static final String[] OSGI_SYSTEM_BUNDLE_EXPORT_PACKAGES = PropsUtil.getArray(PropsKeys.OSGI_SYSTEM_BUNDLE_EXPORT_PACKAGES);
 
@@ -1299,6 +1313,8 @@ public class PropsValues {
 
 	public static final String[] SITES_FORM_UPDATE_SEO = PropsUtil.getArray(PropsKeys.SITES_FORM_UPDATE_SEO);
 
+	public static final String SOCIAL_ACTIVITY_COUNTER_PERIOD_LENGTH = PropsUtil.get(PropsKeys.SOCIAL_ACTIVITY_COUNTER_PERIOD_LENGTH);
+
 	public static final int SOCIAL_EQUITY_EQUITY_LOG_CHECK_INTERVAL = GetterUtil.getInteger(PropsUtil.get(PropsKeys.SOCIAL_EQUITY_EQUITY_LOG_CHECK_INTERVAL));
 
 	public static final boolean SOCIAL_EQUITY_EQUITY_LOG_ENABLED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.SOCIAL_EQUITY_EQUITY_LOG_ENABLED));
@@ -1337,7 +1353,7 @@ public class PropsValues {
 
 	public static boolean THEME_IMAGES_FAST_LOAD = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.THEME_IMAGES_FAST_LOAD));
 
-	public static final boolean THEME_JSP_OVERRIDE_ENABLED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.THEME_JSP_OVERRIDE_ENABLED));
+	public static boolean THEME_JSP_OVERRIDE_ENABLED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.THEME_JSP_OVERRIDE_ENABLED));
 
 	public static boolean THEME_LOADER_NEW_THEME_ID_ON_IMPORT = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.THEME_LOADER_NEW_THEME_ID_ON_IMPORT));
 
@@ -1401,9 +1417,9 @@ public class PropsValues {
 
 	public static final String USERS_FULL_NAME_VALIDATOR = PropsUtil.get(PropsKeys.USERS_FULL_NAME_VALIDATOR);
 
-	public static final int USERS_IMAGE_MAX_HEIGHT = GetterUtil.getInteger(PropsUtil.get(PropsKeys.USERS_IMAGE_MAX_HEIGHT));
+	public static int USERS_IMAGE_MAX_HEIGHT = GetterUtil.getInteger(PropsUtil.get(PropsKeys.USERS_IMAGE_MAX_HEIGHT));
 
-	public static final int USERS_IMAGE_MAX_WIDTH = GetterUtil.getInteger(PropsUtil.get(PropsKeys.USERS_IMAGE_MAX_WIDTH));
+	public static int USERS_IMAGE_MAX_WIDTH = GetterUtil.getInteger(PropsUtil.get(PropsKeys.USERS_IMAGE_MAX_WIDTH));
 
 	public static boolean USERS_LAST_NAME_REQUIRED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.USERS_LAST_NAME_REQUIRED));
 
@@ -1464,6 +1480,8 @@ public class PropsValues {
 	public static final boolean WEB_SERVER_PROXY_LEGACY_MODE =  GetterUtil.getBoolean(PropsUtil.get(PropsKeys.WEB_SERVER_PROXY_LEGACY_MODE));
 
 	public static final String[] WEBDAV_IGNORE = PropsUtil.getArray(PropsKeys.WEBDAV_IGNORE);
+
+	public static final int WEBDAV_NONCE_EXPIRATION = GetterUtil.getInteger(PropsUtil.get(PropsKeys.WEBDAV_NONCE_EXPIRATION));
 
 	public static final String WIDGET_SERVLET_MAPPING = PropsUtil.get(PropsKeys.WIDGET_SERVLET_MAPPING);
 

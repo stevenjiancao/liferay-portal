@@ -147,6 +147,11 @@ public interface SocialActivityLimitLocalService
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public com.liferay.portlet.social.model.SocialActivityLimit fetchSocialActivityLimit(
+		long activityLimitId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
 	/**
 	* Returns the social activity limit with the primary key.
 	*
@@ -231,4 +236,10 @@ public interface SocialActivityLimitLocalService
 	* @param beanIdentifier the Spring bean ID for this bean
 	*/
 	public void setBeanIdentifier(java.lang.String beanIdentifier);
+
+	public com.liferay.portlet.social.model.SocialActivityLimit addActivityLimit(
+		long userId, long groupId, long classNameId, long classPK,
+		int activityType, java.lang.String activityCounterName, int limitPeriod)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

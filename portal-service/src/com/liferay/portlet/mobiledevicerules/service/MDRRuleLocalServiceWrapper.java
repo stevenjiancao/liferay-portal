@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.mobiledevicerules.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link MDRRuleLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.mobiledevicerules.service;
  * @see       MDRRuleLocalService
  * @generated
  */
-public class MDRRuleLocalServiceWrapper implements MDRRuleLocalService {
+public class MDRRuleLocalServiceWrapper implements MDRRuleLocalService,
+	ServiceWrapper<MDRRuleLocalService> {
 	public MDRRuleLocalServiceWrapper(MDRRuleLocalService mdrRuleLocalService) {
 		_mdrRuleLocalService = mdrRuleLocalService;
 	}
@@ -146,6 +149,11 @@ public class MDRRuleLocalServiceWrapper implements MDRRuleLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _mdrRuleLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.mobiledevicerules.model.MDRRule fetchMDRRule(
+		long ruleId) throws com.liferay.portal.kernel.exception.SystemException {
+		return _mdrRuleLocalService.fetchMDRRule(ruleId);
 	}
 
 	/**
@@ -364,12 +372,26 @@ public class MDRRuleLocalServiceWrapper implements MDRRuleLocalService {
 			type, typeSettingsProperties, serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public MDRRuleLocalService getWrappedMDRRuleLocalService() {
 		return _mdrRuleLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedMDRRuleLocalService(
 		MDRRuleLocalService mdrRuleLocalService) {
+		_mdrRuleLocalService = mdrRuleLocalService;
+	}
+
+	public MDRRuleLocalService getWrappedService() {
+		return _mdrRuleLocalService;
+	}
+
+	public void setWrappedService(MDRRuleLocalService mdrRuleLocalService) {
 		_mdrRuleLocalService = mdrRuleLocalService;
 	}
 

@@ -104,10 +104,17 @@ public class AssetEntryServiceImpl extends AssetEntryServiceBaseImpl {
 	public AssetEntry incrementViewCounter(String className, long classPK)
 		throws PortalException, SystemException {
 
+		if (!PropsValues.ASSET_ENTRY_INCREMENT_VIEW_COUNTER_ENABLED) {
+			return null;
+		}
+
 		User user = getGuestOrUser();
 
-		AssetEntry assetEntry = assetEntryLocalService.incrementViewCounter(
+		assetEntryLocalService.incrementViewCounter(
 			user.getUserId(), className, classPK, 1);
+
+		AssetEntry assetEntry = assetEntryLocalService.getEntry(
+			className, classPK);
 
 		if (!user.isDefaultUser()) {
 			socialActivityLocalService.addActivity(

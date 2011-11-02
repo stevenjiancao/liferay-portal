@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.documentlibrary.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link DLFileEntryTypeService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.documentlibrary.service;
  * @see       DLFileEntryTypeService
  * @generated
  */
-public class DLFileEntryTypeServiceWrapper implements DLFileEntryTypeService {
+public class DLFileEntryTypeServiceWrapper implements DLFileEntryTypeService,
+	ServiceWrapper<DLFileEntryTypeService> {
 	public DLFileEntryTypeServiceWrapper(
 		DLFileEntryTypeService dlFileEntryTypeService) {
 		_dlFileEntryTypeService = dlFileEntryTypeService;
@@ -53,9 +56,9 @@ public class DLFileEntryTypeServiceWrapper implements DLFileEntryTypeService {
 	}
 
 	public java.util.List<com.liferay.portlet.documentlibrary.model.DLFileEntryType> getFileEntryTypes(
-		long[] groupIds, int start, int end)
+		long[] groupIds)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return _dlFileEntryTypeService.getFileEntryTypes(groupIds, start, end);
+		return _dlFileEntryTypeService.getFileEntryTypes(groupIds);
 	}
 
 	public int getFileEntryTypesCount(long[] groupIds)
@@ -73,12 +76,26 @@ public class DLFileEntryTypeServiceWrapper implements DLFileEntryTypeService {
 			description, ddmStructureIds, serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public DLFileEntryTypeService getWrappedDLFileEntryTypeService() {
 		return _dlFileEntryTypeService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedDLFileEntryTypeService(
 		DLFileEntryTypeService dlFileEntryTypeService) {
+		_dlFileEntryTypeService = dlFileEntryTypeService;
+	}
+
+	public DLFileEntryTypeService getWrappedService() {
+		return _dlFileEntryTypeService;
+	}
+
+	public void setWrappedService(DLFileEntryTypeService dlFileEntryTypeService) {
 		_dlFileEntryTypeService = dlFileEntryTypeService;
 	}
 

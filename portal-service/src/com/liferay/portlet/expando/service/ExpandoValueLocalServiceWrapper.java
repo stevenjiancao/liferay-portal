@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.expando.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link ExpandoValueLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.expando.service;
  * @see       ExpandoValueLocalService
  * @generated
  */
-public class ExpandoValueLocalServiceWrapper implements ExpandoValueLocalService {
+public class ExpandoValueLocalServiceWrapper implements ExpandoValueLocalService,
+	ServiceWrapper<ExpandoValueLocalService> {
 	public ExpandoValueLocalServiceWrapper(
 		ExpandoValueLocalService expandoValueLocalService) {
 		_expandoValueLocalService = expandoValueLocalService;
@@ -147,6 +150,12 @@ public class ExpandoValueLocalServiceWrapper implements ExpandoValueLocalService
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _expandoValueLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.expando.model.ExpandoValue fetchExpandoValue(
+		long valueId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _expandoValueLocalService.fetchExpandoValue(valueId);
 	}
 
 	/**
@@ -1308,11 +1317,26 @@ public class ExpandoValueLocalServiceWrapper implements ExpandoValueLocalService
 			columnName, classPK);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ExpandoValueLocalService getWrappedExpandoValueLocalService() {
 		return _expandoValueLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedExpandoValueLocalService(
+		ExpandoValueLocalService expandoValueLocalService) {
+		_expandoValueLocalService = expandoValueLocalService;
+	}
+
+	public ExpandoValueLocalService getWrappedService() {
+		return _expandoValueLocalService;
+	}
+
+	public void setWrappedService(
 		ExpandoValueLocalService expandoValueLocalService) {
 		_expandoValueLocalService = expandoValueLocalService;
 	}

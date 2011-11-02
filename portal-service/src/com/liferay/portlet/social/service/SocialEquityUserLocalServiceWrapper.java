@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.social.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link SocialEquityUserLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.social.service;
  * @generated
  */
 public class SocialEquityUserLocalServiceWrapper
-	implements SocialEquityUserLocalService {
+	implements SocialEquityUserLocalService,
+		ServiceWrapper<SocialEquityUserLocalService> {
 	public SocialEquityUserLocalServiceWrapper(
 		SocialEquityUserLocalService socialEquityUserLocalService) {
 		_socialEquityUserLocalService = socialEquityUserLocalService;
@@ -149,6 +152,12 @@ public class SocialEquityUserLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _socialEquityUserLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.social.model.SocialEquityUser fetchSocialEquityUser(
+		long equityUserId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _socialEquityUserLocalService.fetchSocialEquityUser(equityUserId);
 	}
 
 	/**
@@ -396,11 +405,26 @@ public class SocialEquityUserLocalServiceWrapper
 		return _socialEquityUserLocalService.getRankedEquityUsersCount(groupId);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public SocialEquityUserLocalService getWrappedSocialEquityUserLocalService() {
 		return _socialEquityUserLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedSocialEquityUserLocalService(
+		SocialEquityUserLocalService socialEquityUserLocalService) {
+		_socialEquityUserLocalService = socialEquityUserLocalService;
+	}
+
+	public SocialEquityUserLocalService getWrappedService() {
+		return _socialEquityUserLocalService;
+	}
+
+	public void setWrappedService(
 		SocialEquityUserLocalService socialEquityUserLocalService) {
 		_socialEquityUserLocalService = socialEquityUserLocalService;
 	}

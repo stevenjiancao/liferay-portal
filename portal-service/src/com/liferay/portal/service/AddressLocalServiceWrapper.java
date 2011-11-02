@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       AddressLocalService
  * @generated
  */
-public class AddressLocalServiceWrapper implements AddressLocalService {
+public class AddressLocalServiceWrapper implements AddressLocalService,
+	ServiceWrapper<AddressLocalService> {
 	public AddressLocalServiceWrapper(AddressLocalService addressLocalService) {
 		_addressLocalService = addressLocalService;
 	}
@@ -144,6 +145,11 @@ public class AddressLocalServiceWrapper implements AddressLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _addressLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.Address fetchAddress(long addressId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _addressLocalService.fetchAddress(addressId);
 	}
 
 	/**
@@ -281,12 +287,26 @@ public class AddressLocalServiceWrapper implements AddressLocalService {
 			street3, city, zip, regionId, countryId, typeId, mailing, primary);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public AddressLocalService getWrappedAddressLocalService() {
 		return _addressLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedAddressLocalService(
 		AddressLocalService addressLocalService) {
+		_addressLocalService = addressLocalService;
+	}
+
+	public AddressLocalService getWrappedService() {
+		return _addressLocalService;
+	}
+
+	public void setWrappedService(AddressLocalService addressLocalService) {
 		_addressLocalService = addressLocalService;
 	}
 

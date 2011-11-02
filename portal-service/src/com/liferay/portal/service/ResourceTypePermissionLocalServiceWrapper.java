@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class ResourceTypePermissionLocalServiceWrapper
-	implements ResourceTypePermissionLocalService {
+	implements ResourceTypePermissionLocalService,
+		ServiceWrapper<ResourceTypePermissionLocalService> {
 	public ResourceTypePermissionLocalServiceWrapper(
 		ResourceTypePermissionLocalService resourceTypePermissionLocalService) {
 		_resourceTypePermissionLocalService = resourceTypePermissionLocalService;
@@ -149,6 +150,12 @@ public class ResourceTypePermissionLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _resourceTypePermissionLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.ResourceTypePermission fetchResourceTypePermission(
+		long resourceTypePermissionId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _resourceTypePermissionLocalService.fetchResourceTypePermission(resourceTypePermissionId);
 	}
 
 	/**
@@ -321,11 +328,26 @@ public class ResourceTypePermissionLocalServiceWrapper
 			groupId, name, roleId, actionIdsLong, operator);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ResourceTypePermissionLocalService getWrappedResourceTypePermissionLocalService() {
 		return _resourceTypePermissionLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedResourceTypePermissionLocalService(
+		ResourceTypePermissionLocalService resourceTypePermissionLocalService) {
+		_resourceTypePermissionLocalService = resourceTypePermissionLocalService;
+	}
+
+	public ResourceTypePermissionLocalService getWrappedService() {
+		return _resourceTypePermissionLocalService;
+	}
+
+	public void setWrappedService(
 		ResourceTypePermissionLocalService resourceTypePermissionLocalService) {
 		_resourceTypePermissionLocalService = resourceTypePermissionLocalService;
 	}

@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.dynamicdatamapping.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link DDMTemplateLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.dynamicdatamapping.service;
  * @see       DDMTemplateLocalService
  * @generated
  */
-public class DDMTemplateLocalServiceWrapper implements DDMTemplateLocalService {
+public class DDMTemplateLocalServiceWrapper implements DDMTemplateLocalService,
+	ServiceWrapper<DDMTemplateLocalService> {
 	public DDMTemplateLocalServiceWrapper(
 		DDMTemplateLocalService ddmTemplateLocalService) {
 		_ddmTemplateLocalService = ddmTemplateLocalService;
@@ -147,6 +150,12 @@ public class DDMTemplateLocalServiceWrapper implements DDMTemplateLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _ddmTemplateLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.dynamicdatamapping.model.DDMTemplate fetchDDMTemplate(
+		long templateId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ddmTemplateLocalService.fetchDDMTemplate(templateId);
 	}
 
 	/**
@@ -328,6 +337,12 @@ public class DDMTemplateLocalServiceWrapper implements DDMTemplateLocalService {
 	}
 
 	public java.util.List<com.liferay.portlet.dynamicdatamapping.model.DDMTemplate> getTemplates(
+		long structureId, java.lang.String type)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ddmTemplateLocalService.getTemplates(structureId, type);
+	}
+
+	public java.util.List<com.liferay.portlet.dynamicdatamapping.model.DDMTemplate> getTemplates(
 		long structureId, java.lang.String type, java.lang.String mode)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _ddmTemplateLocalService.getTemplates(structureId, type, mode);
@@ -384,11 +399,26 @@ public class DDMTemplateLocalServiceWrapper implements DDMTemplateLocalService {
 			descriptionMap, type, mode, language, script, serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public DDMTemplateLocalService getWrappedDDMTemplateLocalService() {
 		return _ddmTemplateLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedDDMTemplateLocalService(
+		DDMTemplateLocalService ddmTemplateLocalService) {
+		_ddmTemplateLocalService = ddmTemplateLocalService;
+	}
+
+	public DDMTemplateLocalService getWrappedService() {
+		return _ddmTemplateLocalService;
+	}
+
+	public void setWrappedService(
 		DDMTemplateLocalService ddmTemplateLocalService) {
 		_ddmTemplateLocalService = ddmTemplateLocalService;
 	}

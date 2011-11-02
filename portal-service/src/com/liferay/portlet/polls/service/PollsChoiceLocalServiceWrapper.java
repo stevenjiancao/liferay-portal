@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.polls.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link PollsChoiceLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.polls.service;
  * @see       PollsChoiceLocalService
  * @generated
  */
-public class PollsChoiceLocalServiceWrapper implements PollsChoiceLocalService {
+public class PollsChoiceLocalServiceWrapper implements PollsChoiceLocalService,
+	ServiceWrapper<PollsChoiceLocalService> {
 	public PollsChoiceLocalServiceWrapper(
 		PollsChoiceLocalService pollsChoiceLocalService) {
 		_pollsChoiceLocalService = pollsChoiceLocalService;
@@ -147,6 +150,12 @@ public class PollsChoiceLocalServiceWrapper implements PollsChoiceLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _pollsChoiceLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.polls.model.PollsChoice fetchPollsChoice(
+		long choiceId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _pollsChoiceLocalService.fetchPollsChoice(choiceId);
 	}
 
 	/**
@@ -280,11 +289,26 @@ public class PollsChoiceLocalServiceWrapper implements PollsChoiceLocalService {
 			name, description);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public PollsChoiceLocalService getWrappedPollsChoiceLocalService() {
 		return _pollsChoiceLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedPollsChoiceLocalService(
+		PollsChoiceLocalService pollsChoiceLocalService) {
+		_pollsChoiceLocalService = pollsChoiceLocalService;
+	}
+
+	public PollsChoiceLocalService getWrappedService() {
+		return _pollsChoiceLocalService;
+	}
+
+	public void setWrappedService(
 		PollsChoiceLocalService pollsChoiceLocalService) {
 		_pollsChoiceLocalService = pollsChoiceLocalService;
 	}

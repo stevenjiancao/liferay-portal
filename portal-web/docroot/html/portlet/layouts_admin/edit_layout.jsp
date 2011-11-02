@@ -34,6 +34,8 @@ boolean privateLayout = ((Boolean)request.getAttribute("edit_pages.jsp-privateLa
 PortletURL portletURL = (PortletURL)request.getAttribute("edit_pages.jsp-portletURL");
 PortletURL redirectURL = (PortletURL)request.getAttribute("edit_pages.jsp-redirectURL");
 
+String closeRedirect = ParamUtil.getString(request, "closeRedirect");
+
 long refererPlid = ParamUtil.getLong(request, "refererPlid", LayoutConstants.DEFAULT_PLID);
 
 LayoutRevision layoutRevision = LayoutStagingUtil.getLayoutRevision(selLayout);
@@ -78,6 +80,7 @@ String[][] categorySections = {mainSections};
 <aui:form action="<%= editLayoutURL %>" cssClass="edit-layout-form" enctype="multipart/form-data" method="post" name="fm" onSubmit='<%= "event.preventDefault(); " + liferayPortletResponse.getNamespace() + "saveLayout();" %>'>
 	<aui:input name="<%= Constants.CMD %>" type="hidden" />
 	<aui:input name="redirect" type="hidden" value='<%= HttpUtil.addParameter(redirectURL.toString(), liferayPortletResponse.getNamespace() + "selPlid", selPlid) %>' />
+	<aui:input name="closeRedirect" type="hidden" value="<%= closeRedirect %>" />
 	<aui:input name="groupId" type="hidden" value="<%= groupId %>" />
 	<aui:input name="liveGroupId" type="hidden" value="<%= liveGroupId %>" />
 	<aui:input name="stagingGroupId" type="hidden" value="<%= stagingGroupId %>" />
@@ -182,7 +185,7 @@ String[][] categorySections = {mainSections};
 
 													Liferay.Util.focusFormField(content.one('input:text'));
 												},
-												icon: 'circle-plus',
+												icon: 'add',
 												label: '<liferay-ui:message key="add-child-page" />'
 											},
 										</c:if>
@@ -202,7 +205,7 @@ String[][] categorySections = {mainSections};
 														}
 													);
 												},
-												icon: 'key',
+												icon: 'permissions',
 												label: '<liferay-ui:message key="permissions" />'
 											},
 										</c:if>
@@ -212,7 +215,7 @@ String[][] categorySections = {mainSections};
 												handler: function(event) {
 													<portlet:namespace />saveLayout('<%= Constants.DELETE %>');
 												},
-												icon: 'circle-minus',
+												icon: 'delete',
 												label: '<liferay-ui:message key="delete" />'
 											},
 										</c:if>
@@ -264,7 +267,7 @@ String[][] categorySections = {mainSections};
 
 													exportPopup.io.start();
 												},
-												icon: 'arrowthick-1-b',
+												icon: 'export',
 												label: '<liferay-ui:message key="export" />'
 											}
 										</c:if>

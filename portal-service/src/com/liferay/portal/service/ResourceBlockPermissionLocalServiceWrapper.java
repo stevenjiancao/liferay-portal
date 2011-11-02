@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class ResourceBlockPermissionLocalServiceWrapper
-	implements ResourceBlockPermissionLocalService {
+	implements ResourceBlockPermissionLocalService,
+		ServiceWrapper<ResourceBlockPermissionLocalService> {
 	public ResourceBlockPermissionLocalServiceWrapper(
 		ResourceBlockPermissionLocalService resourceBlockPermissionLocalService) {
 		_resourceBlockPermissionLocalService = resourceBlockPermissionLocalService;
@@ -151,6 +152,12 @@ public class ResourceBlockPermissionLocalServiceWrapper
 		return _resourceBlockPermissionLocalService.dynamicQueryCount(dynamicQuery);
 	}
 
+	public com.liferay.portal.model.ResourceBlockPermission fetchResourceBlockPermission(
+		long resourceBlockPermissionId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _resourceBlockPermissionLocalService.fetchResourceBlockPermission(resourceBlockPermissionId);
+	}
+
 	/**
 	* Returns the resource block permission with the primary key.
 	*
@@ -275,11 +282,26 @@ public class ResourceBlockPermissionLocalServiceWrapper
 			roleId, actionIdsLong, operator);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ResourceBlockPermissionLocalService getWrappedResourceBlockPermissionLocalService() {
 		return _resourceBlockPermissionLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedResourceBlockPermissionLocalService(
+		ResourceBlockPermissionLocalService resourceBlockPermissionLocalService) {
+		_resourceBlockPermissionLocalService = resourceBlockPermissionLocalService;
+	}
+
+	public ResourceBlockPermissionLocalService getWrappedService() {
+		return _resourceBlockPermissionLocalService;
+	}
+
+	public void setWrappedService(
 		ResourceBlockPermissionLocalService resourceBlockPermissionLocalService) {
 		_resourceBlockPermissionLocalService = resourceBlockPermissionLocalService;
 	}

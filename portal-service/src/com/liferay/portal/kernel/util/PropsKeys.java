@@ -347,6 +347,10 @@ public interface PropsKeys {
 
 	public static final String COMPANY_DEFAULT_HOME_URL = "company.default.home.url";
 
+	public static final String COMPANY_DEFAULT_LOCALE = "company.default.locale";
+
+	public static final String COMPANY_DEFAULT_TIME_ZONE = "company.default.time.zone";
+
 	public static final String COMPANY_DEFAULT_WEB_ID = "company.default.web.id";
 
 	public static final String COMPANY_ENCRYPTION_ALGORITHM = "company.encryption.algorithm";
@@ -836,6 +840,8 @@ public interface PropsKeys {
 	public static final String JCR_NODE_DOCUMENTLIBRARY = "jcr.node.documentlibrary";
 
 	public static final String JCR_WORKSPACE_NAME = "jcr.workspace.name";
+
+	public static final String JCR_WRAP_SESSION = "jcr.wrap.session";
 
 	public static final String JDBC_DEFAULT_DRIVER_CLASS_NAME = "jdbc.default.driverClassName";
 
@@ -1381,6 +1387,8 @@ public interface PropsKeys {
 
 	public static final String NTLM_AUTH_ENABLED = "ntlm.auth.enabled";
 
+	public static final String NTLM_AUTH_NEGOTIATE_FLAGS = "ntlm.auth.negotiate.flags";
+
 	public static final String NTLM_DOMAIN = "ntlm.auth.domain";
 
 	public static final String NTLM_DOMAIN_CONTROLLER = "ntlm.auth.domain.controller";
@@ -1462,6 +1470,8 @@ public interface PropsKeys {
 	public static final String OSGI_FRAMEWORK_BEGINNING_START_LEVEL = "osgi.framework.beginning.start.level";
 
 	public static final String OSGI_FRAMEWORK_STORAGE = "osgi.framework.storage";
+
+	public static final String OSGI_REGISTER_LIFERAY_SERVICES = "osgi.register.liferay.services";
 
 	public static final String OSGI_SYSTEM_BUNDLE_EXPORT_PACKAGES = "osgi.system.bundle.export.packages";
 
@@ -1721,7 +1731,11 @@ public interface PropsKeys {
 
 	public static final String SESSION_VERIFY_SERIALIZABLE_ATTRIBUTE = "session.verify.serializable.attribute";
 
+	public static final String SETUP_DATABASE_DRIVER_CLASS_NAME = "setup.database.driverClassName";
+
 	public static final String SETUP_DATABASE_TYPES = "setup.database.types";
+
+	public static final String SETUP_DATABASE_URL = "setup.database.url";
 
 	public static final String SETUP_WIZARD_ENABLED = "setup.wizard.enabled";
 
@@ -1800,6 +1814,8 @@ public interface PropsKeys {
 	public static final String SITES_FORM_UPDATE_MAIN = "sites.form.update.main";
 
 	public static final String SITES_FORM_UPDATE_SEO = "sites.form.update.seo";
+
+	public static final String SOCIAL_ACTIVITY_COUNTER_PERIOD_LENGTH = "social.activity.counter.period.length";
 
 	public static final String SOCIAL_BOOKMARK_JSP = "social.bookmark.jsp";
 
@@ -2032,6 +2048,8 @@ public interface PropsKeys {
 	public static final String WEB_SERVER_PROXY_LEGACY_MODE = "web.server.proxy.legacy.mode";
 
 	public static final String WEBDAV_IGNORE = "webdav.ignore";
+
+	public static final String WEBDAV_NONCE_EXPIRATION = "webdav.nonce.expiration";
 
 	public static final String WIDGET_SERVLET_MAPPING = "widget.servlet.mapping";
 

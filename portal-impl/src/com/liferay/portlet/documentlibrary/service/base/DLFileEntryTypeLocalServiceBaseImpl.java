@@ -262,6 +262,11 @@ public abstract class DLFileEntryTypeLocalServiceBaseImpl
 		return dlFileEntryTypePersistence.countWithDynamicQuery(dynamicQuery);
 	}
 
+	public DLFileEntryType fetchDLFileEntryType(long fileEntryTypeId)
+		throws SystemException {
+		return dlFileEntryTypePersistence.fetchByPrimaryKey(fileEntryTypeId);
+	}
+
 	/**
 	 * Returns the document library file entry type with the primary key.
 	 *
@@ -278,6 +283,20 @@ public abstract class DLFileEntryTypeLocalServiceBaseImpl
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException, SystemException {
 		return dlFileEntryTypePersistence.findByPrimaryKey(primaryKeyObj);
+	}
+
+	/**
+	 * Returns the document library file entry type with the UUID in the group.
+	 *
+	 * @param uuid the UUID of document library file entry type
+	 * @param groupId the group id of the document library file entry type
+	 * @return the document library file entry type
+	 * @throws PortalException if a document library file entry type with the UUID in the group could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public DLFileEntryType getDLFileEntryTypeByUuidAndGroupId(String uuid,
+		long groupId) throws PortalException, SystemException {
+		return dlFileEntryTypePersistence.findByUUID_G(uuid, groupId);
 	}
 
 	/**

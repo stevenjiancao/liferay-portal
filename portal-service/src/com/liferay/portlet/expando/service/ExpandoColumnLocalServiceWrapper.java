@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.expando.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link ExpandoColumnLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.expando.service;
  * @generated
  */
 public class ExpandoColumnLocalServiceWrapper
-	implements ExpandoColumnLocalService {
+	implements ExpandoColumnLocalService,
+		ServiceWrapper<ExpandoColumnLocalService> {
 	public ExpandoColumnLocalServiceWrapper(
 		ExpandoColumnLocalService expandoColumnLocalService) {
 		_expandoColumnLocalService = expandoColumnLocalService;
@@ -148,6 +151,12 @@ public class ExpandoColumnLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _expandoColumnLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.expando.model.ExpandoColumn fetchExpandoColumn(
+		long columnId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _expandoColumnLocalService.fetchExpandoColumn(columnId);
 	}
 
 	/**
@@ -472,11 +481,26 @@ public class ExpandoColumnLocalServiceWrapper
 			typeSettings);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ExpandoColumnLocalService getWrappedExpandoColumnLocalService() {
 		return _expandoColumnLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedExpandoColumnLocalService(
+		ExpandoColumnLocalService expandoColumnLocalService) {
+		_expandoColumnLocalService = expandoColumnLocalService;
+	}
+
+	public ExpandoColumnLocalService getWrappedService() {
+		return _expandoColumnLocalService;
+	}
+
+	public void setWrappedService(
 		ExpandoColumnLocalService expandoColumnLocalService) {
 		_expandoColumnLocalService = expandoColumnLocalService;
 	}

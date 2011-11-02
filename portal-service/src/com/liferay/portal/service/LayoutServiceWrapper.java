@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       LayoutService
  * @generated
  */
-public class LayoutServiceWrapper implements LayoutService {
+public class LayoutServiceWrapper implements LayoutService,
+	ServiceWrapper<LayoutService> {
 	public LayoutServiceWrapper(LayoutService layoutService) {
 		_layoutService = layoutService;
 	}
@@ -62,7 +63,7 @@ public class LayoutServiceWrapper implements LayoutService {
 	the corresponding properties defined in {@link
 	com.liferay.portal.util.PropsValues}. To see how the URL is
 	normalized when accessed see {@link
-	com.liferay.portal.util.FriendlyURLNormalizer#normalize(
+	com.liferay.portal.kernel.util.FriendlyURLNormalizerUtil#normalize(
 	String)}.
 	* @param locked whether the layout is locked
 	* @param serviceContext the service context. Must specify the replacement
@@ -125,7 +126,7 @@ public class LayoutServiceWrapper implements LayoutService {
 	the corresponding properties defined in {@link
 	com.liferay.portal.util.PropsValues}. To see how the URL is
 	normalized when accessed see {@link
-	com.liferay.portal.util.FriendlyURLNormalizer#normalize(
+	com.liferay.portal.kernel.util.FriendlyURLNormalizerUtil#normalize(
 	String)}.
 	* @param locked whether the layout is locked
 	* @param serviceContext the service context. Must specify the replacement
@@ -707,7 +708,7 @@ public class LayoutServiceWrapper implements LayoutService {
 	the corresponding properties defined in {@link
 	com.liferay.portal.util.PropsValues}. To see how the URL is
 	normalized when accessed see {@link
-	com.liferay.portal.util.FriendlyURLNormalizer#normalize(
+	com.liferay.portal.kernel.util.FriendlyURLNormalizerUtil#normalize(
 	String)}.
 	* @param iconImage whether the icon image will be updated
 	* @param iconBytes the byte array of the layout's new icon image
@@ -915,11 +916,25 @@ public class LayoutServiceWrapper implements LayoutService {
 		return _layoutService.updatePriority(plid, priority);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public LayoutService getWrappedLayoutService() {
 		return _layoutService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedLayoutService(LayoutService layoutService) {
+		_layoutService = layoutService;
+	}
+
+	public LayoutService getWrappedService() {
+		return _layoutService;
+	}
+
+	public void setWrappedService(LayoutService layoutService) {
 		_layoutService = layoutService;
 	}
 

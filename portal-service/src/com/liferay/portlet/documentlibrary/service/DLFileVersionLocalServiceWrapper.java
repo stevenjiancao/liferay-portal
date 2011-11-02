@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.documentlibrary.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link DLFileVersionLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.documentlibrary.service;
  * @generated
  */
 public class DLFileVersionLocalServiceWrapper
-	implements DLFileVersionLocalService {
+	implements DLFileVersionLocalService,
+		ServiceWrapper<DLFileVersionLocalService> {
 	public DLFileVersionLocalServiceWrapper(
 		DLFileVersionLocalService dlFileVersionLocalService) {
 		_dlFileVersionLocalService = dlFileVersionLocalService;
@@ -148,6 +151,12 @@ public class DLFileVersionLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _dlFileVersionLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.documentlibrary.model.DLFileVersion fetchDLFileVersion(
+		long fileVersionId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _dlFileVersionLocalService.fetchDLFileVersion(fileVersionId);
 	}
 
 	/**
@@ -284,11 +293,26 @@ public class DLFileVersionLocalServiceWrapper
 			fileEntryId);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public DLFileVersionLocalService getWrappedDLFileVersionLocalService() {
 		return _dlFileVersionLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedDLFileVersionLocalService(
+		DLFileVersionLocalService dlFileVersionLocalService) {
+		_dlFileVersionLocalService = dlFileVersionLocalService;
+	}
+
+	public DLFileVersionLocalService getWrappedService() {
+		return _dlFileVersionLocalService;
+	}
+
+	public void setWrappedService(
 		DLFileVersionLocalService dlFileVersionLocalService) {
 		_dlFileVersionLocalService = dlFileVersionLocalService;
 	}

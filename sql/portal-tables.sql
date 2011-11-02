@@ -480,7 +480,8 @@ create table DDMStructure (
 	name STRING null,
 	description STRING null,
 	xsd TEXT null,
-	storageType VARCHAR(75) null
+	storageType VARCHAR(75) null,
+	type_ INTEGER
 );
 
 create table DDMStructureLink (
@@ -503,7 +504,7 @@ create table DDMTemplate (
 	name STRING null,
 	description STRING null,
 	type_ VARCHAR(75) null,
-	mode VARCHAR(75) null,
+	mode_ VARCHAR(75) null,
 	language VARCHAR(75) null,
 	script TEXT null
 );
@@ -559,6 +560,7 @@ create table DLFileEntryMetadata (
 );
 
 create table DLFileEntryType (
+	uuid_ VARCHAR(75) null,
 	fileEntryTypeId LONG not null primary key,
 	groupId LONG,
 	companyId LONG,
@@ -617,6 +619,7 @@ create table DLFileVersion (
 	userName VARCHAR(75) null,
 	createDate DATE null,
 	repositoryId LONG,
+	folderId LONG,
 	fileEntryId LONG,
 	extension VARCHAR(75) null,
 	mimeType VARCHAR(75) null,
@@ -627,10 +630,6 @@ create table DLFileVersion (
 	fileEntryTypeId LONG,
 	version VARCHAR(75) null,
 	size_ LONG,
-	smallImageId LONG,
-	largeImageId LONG,
-	custom1ImageId LONG,
-	custom2ImageId LONG,
 	status INTEGER,
 	statusByUserId LONG,
 	statusByUserName VARCHAR(75) null,
@@ -1252,8 +1251,7 @@ create table Organization_ (
 	organizationId LONG not null primary key,
 	companyId LONG,
 	parentOrganizationId LONG,
-	leftOrganizationId LONG,
-	rightOrganizationId LONG,
+	treePath STRING null,
 	name VARCHAR(100) null,
 	type_ VARCHAR(75) null,
 	recursable BOOLEAN,
@@ -1883,7 +1881,7 @@ create table SocialActivityCounter (
 	classNameId LONG,
 	classPK LONG,
 	name VARCHAR(75) null,
-	type_ INTEGER,
+	ownerType INTEGER,
 	currentValue INTEGER,
 	totalValue INTEGER,
 	graceValue INTEGER,
@@ -1910,7 +1908,7 @@ create table SocialActivitySetting (
 	classNameId LONG,
 	activityType INTEGER,
 	name VARCHAR(75) null,
-	value VARCHAR(75) null
+	value VARCHAR(1024) null
 );
 
 create table SocialEquityAssetEntry (

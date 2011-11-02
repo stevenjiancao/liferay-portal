@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.ratings.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link RatingsStatsLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.ratings.service;
  * @see       RatingsStatsLocalService
  * @generated
  */
-public class RatingsStatsLocalServiceWrapper implements RatingsStatsLocalService {
+public class RatingsStatsLocalServiceWrapper implements RatingsStatsLocalService,
+	ServiceWrapper<RatingsStatsLocalService> {
 	public RatingsStatsLocalServiceWrapper(
 		RatingsStatsLocalService ratingsStatsLocalService) {
 		_ratingsStatsLocalService = ratingsStatsLocalService;
@@ -147,6 +150,12 @@ public class RatingsStatsLocalServiceWrapper implements RatingsStatsLocalService
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _ratingsStatsLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.ratings.model.RatingsStats fetchRatingsStats(
+		long statsId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingsStatsLocalService.fetchRatingsStats(statsId);
 	}
 
 	/**
@@ -275,11 +284,26 @@ public class RatingsStatsLocalServiceWrapper implements RatingsStatsLocalService
 		return _ratingsStatsLocalService.getStats(className, classPK);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public RatingsStatsLocalService getWrappedRatingsStatsLocalService() {
 		return _ratingsStatsLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedRatingsStatsLocalService(
+		RatingsStatsLocalService ratingsStatsLocalService) {
+		_ratingsStatsLocalService = ratingsStatsLocalService;
+	}
+
+	public RatingsStatsLocalService getWrappedService() {
+		return _ratingsStatsLocalService;
+	}
+
+	public void setWrappedService(
 		RatingsStatsLocalService ratingsStatsLocalService) {
 		_ratingsStatsLocalService = ratingsStatsLocalService;
 	}

@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       UserLocalService
  * @generated
  */
-public class UserLocalServiceWrapper implements UserLocalService {
+public class UserLocalServiceWrapper implements UserLocalService,
+	ServiceWrapper<UserLocalService> {
 	public UserLocalServiceWrapper(UserLocalService userLocalService) {
 		_userLocalService = userLocalService;
 	}
@@ -146,6 +147,11 @@ public class UserLocalServiceWrapper implements UserLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _userLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.User fetchUser(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userLocalService.fetchUser(userId);
 	}
 
 	/**
@@ -2850,11 +2856,25 @@ public class UserLocalServiceWrapper implements UserLocalService {
 		_userLocalService.verifyEmailAddress(ticketKey);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public UserLocalService getWrappedUserLocalService() {
 		return _userLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedUserLocalService(UserLocalService userLocalService) {
+		_userLocalService = userLocalService;
+	}
+
+	public UserLocalService getWrappedService() {
+		return _userLocalService;
+	}
+
+	public void setWrappedService(UserLocalService userLocalService) {
 		_userLocalService = userLocalService;
 	}
 

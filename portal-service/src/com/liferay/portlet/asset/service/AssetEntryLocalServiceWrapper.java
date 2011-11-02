@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.asset.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link AssetEntryLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.asset.service;
  * @see       AssetEntryLocalService
  * @generated
  */
-public class AssetEntryLocalServiceWrapper implements AssetEntryLocalService {
+public class AssetEntryLocalServiceWrapper implements AssetEntryLocalService,
+	ServiceWrapper<AssetEntryLocalService> {
 	public AssetEntryLocalServiceWrapper(
 		AssetEntryLocalService assetEntryLocalService) {
 		_assetEntryLocalService = assetEntryLocalService;
@@ -147,6 +150,12 @@ public class AssetEntryLocalServiceWrapper implements AssetEntryLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _assetEntryLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.asset.model.AssetEntry fetchAssetEntry(
+		long entryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _assetEntryLocalService.fetchAssetEntry(entryId);
 	}
 
 	/**
@@ -471,12 +480,26 @@ public class AssetEntryLocalServiceWrapper implements AssetEntryLocalService {
 			tagNames);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public AssetEntryLocalService getWrappedAssetEntryLocalService() {
 		return _assetEntryLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedAssetEntryLocalService(
 		AssetEntryLocalService assetEntryLocalService) {
+		_assetEntryLocalService = assetEntryLocalService;
+	}
+
+	public AssetEntryLocalService getWrappedService() {
+		return _assetEntryLocalService;
+	}
+
+	public void setWrappedService(AssetEntryLocalService assetEntryLocalService) {
 		_assetEntryLocalService = assetEntryLocalService;
 	}
 

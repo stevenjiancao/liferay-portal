@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.asset.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link AssetCategoryLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.asset.service;
  * @generated
  */
 public class AssetCategoryLocalServiceWrapper
-	implements AssetCategoryLocalService {
+	implements AssetCategoryLocalService,
+		ServiceWrapper<AssetCategoryLocalService> {
 	public AssetCategoryLocalServiceWrapper(
 		AssetCategoryLocalService assetCategoryLocalService) {
 		_assetCategoryLocalService = assetCategoryLocalService;
@@ -148,6 +151,12 @@ public class AssetCategoryLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _assetCategoryLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.asset.model.AssetCategory fetchAssetCategory(
+		long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _assetCategoryLocalService.fetchAssetCategory(categoryId);
 	}
 
 	/**
@@ -461,11 +470,26 @@ public class AssetCategoryLocalServiceWrapper
 			categoryProperties, serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public AssetCategoryLocalService getWrappedAssetCategoryLocalService() {
 		return _assetCategoryLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedAssetCategoryLocalService(
+		AssetCategoryLocalService assetCategoryLocalService) {
+		_assetCategoryLocalService = assetCategoryLocalService;
+	}
+
+	public AssetCategoryLocalService getWrappedService() {
+		return _assetCategoryLocalService;
+	}
+
+	public void setWrappedService(
 		AssetCategoryLocalService assetCategoryLocalService) {
 		_assetCategoryLocalService = assetCategoryLocalService;
 	}

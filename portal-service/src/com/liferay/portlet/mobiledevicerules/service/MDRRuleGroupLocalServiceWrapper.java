@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.mobiledevicerules.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link MDRRuleGroupLocalService}.
@@ -23,7 +25,8 @@ package com.liferay.portlet.mobiledevicerules.service;
  * @see       MDRRuleGroupLocalService
  * @generated
  */
-public class MDRRuleGroupLocalServiceWrapper implements MDRRuleGroupLocalService {
+public class MDRRuleGroupLocalServiceWrapper implements MDRRuleGroupLocalService,
+	ServiceWrapper<MDRRuleGroupLocalService> {
 	public MDRRuleGroupLocalServiceWrapper(
 		MDRRuleGroupLocalService mdrRuleGroupLocalService) {
 		_mdrRuleGroupLocalService = mdrRuleGroupLocalService;
@@ -147,6 +150,12 @@ public class MDRRuleGroupLocalServiceWrapper implements MDRRuleGroupLocalService
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _mdrRuleGroupLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.mobiledevicerules.model.MDRRuleGroup fetchMDRRuleGroup(
+		long ruleGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _mdrRuleGroupLocalService.fetchMDRRuleGroup(ruleGroupId);
 	}
 
 	/**
@@ -314,6 +323,13 @@ public class MDRRuleGroupLocalServiceWrapper implements MDRRuleGroupLocalService
 		return _mdrRuleGroupLocalService.fetchRuleGroup(ruleGroupId);
 	}
 
+	public com.liferay.portlet.mobiledevicerules.model.MDRRuleGroup getRuleGroup(
+		long ruleGroupId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _mdrRuleGroupLocalService.getRuleGroup(ruleGroupId);
+	}
+
 	public java.util.List<com.liferay.portlet.mobiledevicerules.model.MDRRuleGroup> getRuleGroups(
 		long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException {
@@ -359,11 +375,26 @@ public class MDRRuleGroupLocalServiceWrapper implements MDRRuleGroupLocalService
 			descriptionMap, serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public MDRRuleGroupLocalService getWrappedMDRRuleGroupLocalService() {
 		return _mdrRuleGroupLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedMDRRuleGroupLocalService(
+		MDRRuleGroupLocalService mdrRuleGroupLocalService) {
+		_mdrRuleGroupLocalService = mdrRuleGroupLocalService;
+	}
+
+	public MDRRuleGroupLocalService getWrappedService() {
+		return _mdrRuleGroupLocalService;
+	}
+
+	public void setWrappedService(
 		MDRRuleGroupLocalService mdrRuleGroupLocalService) {
 		_mdrRuleGroupLocalService = mdrRuleGroupLocalService;
 	}

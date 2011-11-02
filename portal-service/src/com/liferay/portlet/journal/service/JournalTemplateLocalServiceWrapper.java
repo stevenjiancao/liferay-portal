@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.journal.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link JournalTemplateLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.journal.service;
  * @generated
  */
 public class JournalTemplateLocalServiceWrapper
-	implements JournalTemplateLocalService {
+	implements JournalTemplateLocalService,
+		ServiceWrapper<JournalTemplateLocalService> {
 	public JournalTemplateLocalServiceWrapper(
 		JournalTemplateLocalService journalTemplateLocalService) {
 		_journalTemplateLocalService = journalTemplateLocalService;
@@ -149,6 +152,11 @@ public class JournalTemplateLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _journalTemplateLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.journal.model.JournalTemplate fetchJournalTemplate(
+		long id) throws com.liferay.portal.kernel.exception.SystemException {
+		return _journalTemplateLocalService.fetchJournalTemplate(id);
 	}
 
 	/**
@@ -475,11 +483,26 @@ public class JournalTemplateLocalServiceWrapper
 			cacheable, smallImage, smallImageURL, smallImageFile, serviceContext);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public JournalTemplateLocalService getWrappedJournalTemplateLocalService() {
 		return _journalTemplateLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedJournalTemplateLocalService(
+		JournalTemplateLocalService journalTemplateLocalService) {
+		_journalTemplateLocalService = journalTemplateLocalService;
+	}
+
+	public JournalTemplateLocalService getWrappedService() {
+		return _journalTemplateLocalService;
+	}
+
+	public void setWrappedService(
 		JournalTemplateLocalService journalTemplateLocalService) {
 		_journalTemplateLocalService = journalTemplateLocalService;
 	}

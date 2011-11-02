@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       RoleLocalService
  * @generated
  */
-public class RoleLocalServiceWrapper implements RoleLocalService {
+public class RoleLocalServiceWrapper implements RoleLocalService,
+	ServiceWrapper<RoleLocalService> {
 	public RoleLocalServiceWrapper(RoleLocalService roleLocalService) {
 		_roleLocalService = roleLocalService;
 	}
@@ -146,6 +147,11 @@ public class RoleLocalServiceWrapper implements RoleLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _roleLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.Role fetchRole(long roleId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _roleLocalService.fetchRole(roleId);
 	}
 
 	/**
@@ -1038,11 +1044,25 @@ public class RoleLocalServiceWrapper implements RoleLocalService {
 			descriptionMap, subtype);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public RoleLocalService getWrappedRoleLocalService() {
 		return _roleLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedRoleLocalService(RoleLocalService roleLocalService) {
+		_roleLocalService = roleLocalService;
+	}
+
+	public RoleLocalService getWrappedService() {
+		return _roleLocalService;
+	}
+
+	public void setWrappedService(RoleLocalService roleLocalService) {
 		_roleLocalService = roleLocalService;
 	}
 

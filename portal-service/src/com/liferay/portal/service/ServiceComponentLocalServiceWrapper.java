@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class ServiceComponentLocalServiceWrapper
-	implements ServiceComponentLocalService {
+	implements ServiceComponentLocalService,
+		ServiceWrapper<ServiceComponentLocalService> {
 	public ServiceComponentLocalServiceWrapper(
 		ServiceComponentLocalService serviceComponentLocalService) {
 		_serviceComponentLocalService = serviceComponentLocalService;
@@ -149,6 +150,12 @@ public class ServiceComponentLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _serviceComponentLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.ServiceComponent fetchServiceComponent(
+		long serviceComponentId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceComponentLocalService.fetchServiceComponent(serviceComponentId);
 	}
 
 	/**
@@ -284,11 +291,26 @@ public class ServiceComponentLocalServiceWrapper
 		_serviceComponentLocalService.verifyDB();
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ServiceComponentLocalService getWrappedServiceComponentLocalService() {
 		return _serviceComponentLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedServiceComponentLocalService(
+		ServiceComponentLocalService serviceComponentLocalService) {
+		_serviceComponentLocalService = serviceComponentLocalService;
+	}
+
+	public ServiceComponentLocalService getWrappedService() {
+		return _serviceComponentLocalService;
+	}
+
+	public void setWrappedService(
 		ServiceComponentLocalService serviceComponentLocalService) {
 		_serviceComponentLocalService = serviceComponentLocalService;
 	}

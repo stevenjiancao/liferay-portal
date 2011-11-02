@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class LayoutPrototypeLocalServiceWrapper
-	implements LayoutPrototypeLocalService {
+	implements LayoutPrototypeLocalService,
+		ServiceWrapper<LayoutPrototypeLocalService> {
 	public LayoutPrototypeLocalServiceWrapper(
 		LayoutPrototypeLocalService layoutPrototypeLocalService) {
 		_layoutPrototypeLocalService = layoutPrototypeLocalService;
@@ -151,6 +152,12 @@ public class LayoutPrototypeLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _layoutPrototypeLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.LayoutPrototype fetchLayoutPrototype(
+		long layoutPrototypeId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _layoutPrototypeLocalService.fetchLayoutPrototype(layoutPrototypeId);
 	}
 
 	/**
@@ -290,11 +297,26 @@ public class LayoutPrototypeLocalServiceWrapper
 			nameMap, description, active);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public LayoutPrototypeLocalService getWrappedLayoutPrototypeLocalService() {
 		return _layoutPrototypeLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedLayoutPrototypeLocalService(
+		LayoutPrototypeLocalService layoutPrototypeLocalService) {
+		_layoutPrototypeLocalService = layoutPrototypeLocalService;
+	}
+
+	public LayoutPrototypeLocalService getWrappedService() {
+		return _layoutPrototypeLocalService;
+	}
+
+	public void setWrappedService(
 		LayoutPrototypeLocalService layoutPrototypeLocalService) {
 		_layoutPrototypeLocalService = layoutPrototypeLocalService;
 	}

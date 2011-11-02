@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class UserNotificationEventLocalServiceWrapper
-	implements UserNotificationEventLocalService {
+	implements UserNotificationEventLocalService,
+		ServiceWrapper<UserNotificationEventLocalService> {
 	public UserNotificationEventLocalServiceWrapper(
 		UserNotificationEventLocalService userNotificationEventLocalService) {
 		_userNotificationEventLocalService = userNotificationEventLocalService;
@@ -149,6 +150,12 @@ public class UserNotificationEventLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _userNotificationEventLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.UserNotificationEvent fetchUserNotificationEvent(
+		long userNotificationEventId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userNotificationEventLocalService.fetchUserNotificationEvent(userNotificationEventId);
 	}
 
 	/**
@@ -322,11 +329,26 @@ public class UserNotificationEventLocalServiceWrapper
 			archive);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public UserNotificationEventLocalService getWrappedUserNotificationEventLocalService() {
 		return _userNotificationEventLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedUserNotificationEventLocalService(
+		UserNotificationEventLocalService userNotificationEventLocalService) {
+		_userNotificationEventLocalService = userNotificationEventLocalService;
+	}
+
+	public UserNotificationEventLocalService getWrappedService() {
+		return _userNotificationEventLocalService;
+	}
+
+	public void setWrappedService(
 		UserNotificationEventLocalService userNotificationEventLocalService) {
 		_userNotificationEventLocalService = userNotificationEventLocalService;
 	}

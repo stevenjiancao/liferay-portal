@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.shopping.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link ShoppingOrderItemLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.shopping.service;
  * @generated
  */
 public class ShoppingOrderItemLocalServiceWrapper
-	implements ShoppingOrderItemLocalService {
+	implements ShoppingOrderItemLocalService,
+		ServiceWrapper<ShoppingOrderItemLocalService> {
 	public ShoppingOrderItemLocalServiceWrapper(
 		ShoppingOrderItemLocalService shoppingOrderItemLocalService) {
 		_shoppingOrderItemLocalService = shoppingOrderItemLocalService;
@@ -151,6 +154,12 @@ public class ShoppingOrderItemLocalServiceWrapper
 		return _shoppingOrderItemLocalService.dynamicQueryCount(dynamicQuery);
 	}
 
+	public com.liferay.portlet.shopping.model.ShoppingOrderItem fetchShoppingOrderItem(
+		long orderItemId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _shoppingOrderItemLocalService.fetchShoppingOrderItem(orderItemId);
+	}
+
 	/**
 	* Returns the shopping order item with the primary key.
 	*
@@ -255,11 +264,26 @@ public class ShoppingOrderItemLocalServiceWrapper
 		return _shoppingOrderItemLocalService.getOrderItems(orderId);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ShoppingOrderItemLocalService getWrappedShoppingOrderItemLocalService() {
 		return _shoppingOrderItemLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedShoppingOrderItemLocalService(
+		ShoppingOrderItemLocalService shoppingOrderItemLocalService) {
+		_shoppingOrderItemLocalService = shoppingOrderItemLocalService;
+	}
+
+	public ShoppingOrderItemLocalService getWrappedService() {
+		return _shoppingOrderItemLocalService;
+	}
+
+	public void setWrappedService(
 		ShoppingOrderItemLocalService shoppingOrderItemLocalService) {
 		_shoppingOrderItemLocalService = shoppingOrderItemLocalService;
 	}

@@ -42,22 +42,7 @@ import javax.portlet.PortletPreferences;
  */
 public class DDMPortletDataHandlerImpl extends BasePortletDataHandler {
 
-	@Override
-	public PortletDataHandlerControl[] getExportControls() {
-		return new PortletDataHandlerControl[] {_structures, _templates};
-	}
-
-	@Override
-	public PortletDataHandlerControl[] getImportControls() {
-		return new PortletDataHandlerControl[] {_structures, _templates};
-	}
-
-	@Override
-	public boolean isAlwaysExportable() {
-		return _ALWAYS_EXPORTABLE;
-	}
-
-	protected static void exportStructure(
+	public static void exportStructure(
 			PortletDataContext portletDataContext, Element structuresElement,
 			DDMStructure structure)
 		throws Exception {
@@ -72,6 +57,76 @@ public class DDMPortletDataHandlerImpl extends BasePortletDataHandler {
 
 		portletDataContext.addClassedModel(
 			structureElement, path, structure, _NAMESPACE);
+	}
+
+	public static void importStructure(
+			PortletDataContext portletDataContext, Element structureElement)
+		throws Exception {
+
+		String path = structureElement.attributeValue("path");
+
+		if (!portletDataContext.isPathNotProcessed(path)) {
+			return;
+		}
+
+		DDMStructure structure =
+			(DDMStructure)portletDataContext.getZipEntryAsObject(path);
+
+		long userId = portletDataContext.getUserId(structure.getUserUuid());
+
+		ServiceContext serviceContext = portletDataContext.createServiceContext(
+			structureElement, structure, _NAMESPACE);
+
+		DDMStructure importedStructure = null;
+
+		if (portletDataContext.isDataStrategyMirror()) {
+			DDMStructure existingStructure =  DDMStructureUtil.fetchByUUID_G(
+				structure.getUuid(), portletDataContext.getScopeGroupId());
+
+			if (existingStructure == null) {
+				serviceContext.setUuid(structure.getUuid());
+
+				importedStructure = DDMStructureLocalServiceUtil.addStructure(
+					userId, portletDataContext.getScopeGroupId(),
+					structure.getClassNameId(), structure.getStructureKey(),
+					structure.getNameMap(), structure.getDescriptionMap(),
+					structure.getXsd(), structure.getStorageType(),
+					structure.getType(), serviceContext);
+			}
+			else {
+				importedStructure =
+					DDMStructureLocalServiceUtil.updateStructure(
+						existingStructure.getStructureId(),
+						structure.getNameMap(), structure.getDescriptionMap(),
+						structure.getXsd(), serviceContext);
+			}
+		}
+		else {
+			importedStructure = DDMStructureLocalServiceUtil.addStructure(
+				userId, portletDataContext.getScopeGroupId(),
+				structure.getClassNameId(), structure.getStructureKey(),
+				structure.getNameMap(), structure.getDescriptionMap(),
+				structure.getXsd(), structure.getStorageType(),
+				structure.getType(), serviceContext);
+		}
+
+		portletDataContext.importClassedModel(
+			structure, importedStructure, _NAMESPACE);
+	}
+
+	@Override
+	public PortletDataHandlerControl[] getExportControls() {
+		return new PortletDataHandlerControl[] {_structures, _templates};
+	}
+
+	@Override
+	public PortletDataHandlerControl[] getImportControls() {
+		return new PortletDataHandlerControl[] {_structures, _templates};
+	}
+
+	@Override
+	public boolean isAlwaysExportable() {
+		return _ALWAYS_EXPORTABLE;
 	}
 
 	protected static void exportTemplate(
@@ -119,60 +174,6 @@ public class DDMPortletDataHandlerImpl extends BasePortletDataHandler {
 		sb.append(".xml");
 
 		return sb.toString();
-	}
-
-	protected static void importStructure(
-			PortletDataContext portletDataContext, Element structureElement)
-		throws Exception {
-
-		String path = structureElement.attributeValue("path");
-
-		if (!portletDataContext.isPathNotProcessed(path)) {
-			return;
-		}
-
-		DDMStructure structure =
-			(DDMStructure)portletDataContext.getZipEntryAsObject(path);
-
-		long userId = portletDataContext.getUserId(structure.getUserUuid());
-
-		ServiceContext serviceContext = portletDataContext.createServiceContext(
-			structureElement, structure, _NAMESPACE);
-
-		DDMStructure importedStructure = null;
-
-		if (portletDataContext.isDataStrategyMirror()) {
-			DDMStructure existingStructure =  DDMStructureUtil.fetchByUUID_G(
-				structure.getUuid(), portletDataContext.getScopeGroupId());
-
-			if (existingStructure == null) {
-				serviceContext.setUuid(structure.getUuid());
-
-				importedStructure = DDMStructureLocalServiceUtil.addStructure(
-					userId, portletDataContext.getScopeGroupId(),
-					structure.getClassNameId(), structure.getStructureKey(),
-					structure.getNameMap(), structure.getDescriptionMap(),
-					structure.getXsd(), structure.getStorageType(),
-					serviceContext);
-			}
-			else {
-				importedStructure =
-					DDMStructureLocalServiceUtil.updateStructure(
-						existingStructure.getStructureId(),
-						structure.getNameMap(), structure.getDescriptionMap(),
-						structure.getXsd(), serviceContext);
-			}
-		}
-		else {
-			importedStructure = DDMStructureLocalServiceUtil.addStructure(
-				userId, portletDataContext.getScopeGroupId(),
-				structure.getClassNameId(), structure.getStructureKey(),
-				structure.getNameMap(), structure.getDescriptionMap(),
-				structure.getXsd(), structure.getStorageType(), serviceContext);
-		}
-
-		portletDataContext.importClassedModel(
-			structure, importedStructure, _NAMESPACE);
 	}
 
 	protected static void importTemplate(
@@ -274,10 +275,10 @@ public class DDMPortletDataHandlerImpl extends BasePortletDataHandler {
 
 		Element structuresElement = rootElement.addElement("structures");
 
-		List<DDMStructure> structures = DDMStructureUtil.findByGroupId(
+		List<DDMStructure> ddmStructures = DDMStructureUtil.findByGroupId(
 			portletDataContext.getScopeGroupId());
 
-		for (DDMStructure structure : structures) {
+		for (DDMStructure structure : ddmStructures) {
 			if (portletDataContext.isWithinDateRange(
 					structure.getModifiedDate())) {
 

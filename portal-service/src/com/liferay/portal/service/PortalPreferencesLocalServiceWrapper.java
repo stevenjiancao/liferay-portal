@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class PortalPreferencesLocalServiceWrapper
-	implements PortalPreferencesLocalService {
+	implements PortalPreferencesLocalService,
+		ServiceWrapper<PortalPreferencesLocalService> {
 	public PortalPreferencesLocalServiceWrapper(
 		PortalPreferencesLocalService portalPreferencesLocalService) {
 		_portalPreferencesLocalService = portalPreferencesLocalService;
@@ -149,6 +150,12 @@ public class PortalPreferencesLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _portalPreferencesLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.PortalPreferences fetchPortalPreferences(
+		long portalPreferencesId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _portalPreferencesLocalService.fetchPortalPreferences(portalPreferencesId);
 	}
 
 	/**
@@ -286,11 +293,26 @@ public class PortalPreferencesLocalServiceWrapper
 			ownerType, xml);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public PortalPreferencesLocalService getWrappedPortalPreferencesLocalService() {
 		return _portalPreferencesLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedPortalPreferencesLocalService(
+		PortalPreferencesLocalService portalPreferencesLocalService) {
+		_portalPreferencesLocalService = portalPreferencesLocalService;
+	}
+
+	public PortalPreferencesLocalService getWrappedService() {
+		return _portalPreferencesLocalService;
+	}
+
+	public void setWrappedService(
 		PortalPreferencesLocalService portalPreferencesLocalService) {
 		_portalPreferencesLocalService = portalPreferencesLocalService;
 	}

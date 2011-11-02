@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       ResourceCodeLocalService
  * @generated
  */
-public class ResourceCodeLocalServiceWrapper implements ResourceCodeLocalService {
+public class ResourceCodeLocalServiceWrapper implements ResourceCodeLocalService,
+	ServiceWrapper<ResourceCodeLocalService> {
 	public ResourceCodeLocalServiceWrapper(
 		ResourceCodeLocalService resourceCodeLocalService) {
 		_resourceCodeLocalService = resourceCodeLocalService;
@@ -148,6 +149,11 @@ public class ResourceCodeLocalServiceWrapper implements ResourceCodeLocalService
 		return _resourceCodeLocalService.dynamicQueryCount(dynamicQuery);
 	}
 
+	public com.liferay.portal.model.ResourceCode fetchResourceCode(long codeId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _resourceCodeLocalService.fetchResourceCode(codeId);
+	}
+
 	/**
 	* Returns the resource code with the primary key.
 	*
@@ -265,11 +271,26 @@ public class ResourceCodeLocalServiceWrapper implements ResourceCodeLocalService
 		return _resourceCodeLocalService.getResourceCode(companyId, name, scope);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ResourceCodeLocalService getWrappedResourceCodeLocalService() {
 		return _resourceCodeLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedResourceCodeLocalService(
+		ResourceCodeLocalService resourceCodeLocalService) {
+		_resourceCodeLocalService = resourceCodeLocalService;
+	}
+
+	public ResourceCodeLocalService getWrappedService() {
+		return _resourceCodeLocalService;
+	}
+
+	public void setWrappedService(
 		ResourceCodeLocalService resourceCodeLocalService) {
 		_resourceCodeLocalService = resourceCodeLocalService;
 	}

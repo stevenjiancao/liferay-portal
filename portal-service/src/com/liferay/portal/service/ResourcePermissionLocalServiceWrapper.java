@@ -24,7 +24,8 @@ package com.liferay.portal.service;
  * @generated
  */
 public class ResourcePermissionLocalServiceWrapper
-	implements ResourcePermissionLocalService {
+	implements ResourcePermissionLocalService,
+		ServiceWrapper<ResourcePermissionLocalService> {
 	public ResourcePermissionLocalServiceWrapper(
 		ResourcePermissionLocalService resourcePermissionLocalService) {
 		_resourcePermissionLocalService = resourcePermissionLocalService;
@@ -149,6 +150,12 @@ public class ResourcePermissionLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _resourcePermissionLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.ResourcePermission fetchResourcePermission(
+		long resourcePermissionId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _resourcePermissionLocalService.fetchResourcePermission(resourcePermissionId);
 	}
 
 	/**
@@ -409,6 +416,16 @@ public class ResourcePermissionLocalServiceWrapper
 			com.liferay.portal.kernel.exception.SystemException {
 		return _resourcePermissionLocalService.getAvailableResourcePermissionActionIds(companyId,
 			name, scope, primKey, roleId, actionIds);
+	}
+
+	public java.util.Map<java.lang.Long, java.util.Set<java.lang.String>> getAvailableResourcePermissionActionIds(
+		long companyId, java.lang.String name, int scope,
+		java.lang.String primKey, long[] roleIds,
+		java.util.Collection<java.lang.String> actionIds)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _resourcePermissionLocalService.getAvailableResourcePermissionActionIds(companyId,
+			name, scope, primKey, roleIds, actionIds);
 	}
 
 	/**
@@ -898,11 +915,26 @@ public class ResourcePermissionLocalServiceWrapper
 			scope, primKey, roleIdsToActionIds);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ResourcePermissionLocalService getWrappedResourcePermissionLocalService() {
 		return _resourcePermissionLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedResourcePermissionLocalService(
+		ResourcePermissionLocalService resourcePermissionLocalService) {
+		_resourcePermissionLocalService = resourcePermissionLocalService;
+	}
+
+	public ResourcePermissionLocalService getWrappedService() {
+		return _resourcePermissionLocalService;
+	}
+
+	public void setWrappedService(
 		ResourcePermissionLocalService resourcePermissionLocalService) {
 		_resourcePermissionLocalService = resourcePermissionLocalService;
 	}

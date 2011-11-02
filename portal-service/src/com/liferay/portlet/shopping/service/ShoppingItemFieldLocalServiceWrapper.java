@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.shopping.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link ShoppingItemFieldLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.shopping.service;
  * @generated
  */
 public class ShoppingItemFieldLocalServiceWrapper
-	implements ShoppingItemFieldLocalService {
+	implements ShoppingItemFieldLocalService,
+		ServiceWrapper<ShoppingItemFieldLocalService> {
 	public ShoppingItemFieldLocalServiceWrapper(
 		ShoppingItemFieldLocalService shoppingItemFieldLocalService) {
 		_shoppingItemFieldLocalService = shoppingItemFieldLocalService;
@@ -151,6 +154,12 @@ public class ShoppingItemFieldLocalServiceWrapper
 		return _shoppingItemFieldLocalService.dynamicQueryCount(dynamicQuery);
 	}
 
+	public com.liferay.portlet.shopping.model.ShoppingItemField fetchShoppingItemField(
+		long itemFieldId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _shoppingItemFieldLocalService.fetchShoppingItemField(itemFieldId);
+	}
+
 	/**
 	* Returns the shopping item field with the primary key.
 	*
@@ -254,11 +263,26 @@ public class ShoppingItemFieldLocalServiceWrapper
 		return _shoppingItemFieldLocalService.getItemFields(itemId);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public ShoppingItemFieldLocalService getWrappedShoppingItemFieldLocalService() {
 		return _shoppingItemFieldLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedShoppingItemFieldLocalService(
+		ShoppingItemFieldLocalService shoppingItemFieldLocalService) {
+		_shoppingItemFieldLocalService = shoppingItemFieldLocalService;
+	}
+
+	public ShoppingItemFieldLocalService getWrappedService() {
+		return _shoppingItemFieldLocalService;
+	}
+
+	public void setWrappedService(
 		ShoppingItemFieldLocalService shoppingItemFieldLocalService) {
 		_shoppingItemFieldLocalService = shoppingItemFieldLocalService;
 	}

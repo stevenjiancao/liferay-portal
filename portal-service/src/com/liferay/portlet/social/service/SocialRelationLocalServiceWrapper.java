@@ -14,6 +14,8 @@
 
 package com.liferay.portlet.social.service;
 
+import com.liferay.portal.service.ServiceWrapper;
+
 /**
  * <p>
  * This class is a wrapper for {@link SocialRelationLocalService}.
@@ -24,7 +26,8 @@ package com.liferay.portlet.social.service;
  * @generated
  */
 public class SocialRelationLocalServiceWrapper
-	implements SocialRelationLocalService {
+	implements SocialRelationLocalService,
+		ServiceWrapper<SocialRelationLocalService> {
 	public SocialRelationLocalServiceWrapper(
 		SocialRelationLocalService socialRelationLocalService) {
 		_socialRelationLocalService = socialRelationLocalService;
@@ -148,6 +151,12 @@ public class SocialRelationLocalServiceWrapper
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _socialRelationLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portlet.social.model.SocialRelation fetchSocialRelation(
+		long relationId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _socialRelationLocalService.fetchSocialRelation(relationId);
 	}
 
 	/**
@@ -536,11 +545,26 @@ public class SocialRelationLocalServiceWrapper
 		return _socialRelationLocalService.isRelatable(userId1, userId2, type);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public SocialRelationLocalService getWrappedSocialRelationLocalService() {
 		return _socialRelationLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedSocialRelationLocalService(
+		SocialRelationLocalService socialRelationLocalService) {
+		_socialRelationLocalService = socialRelationLocalService;
+	}
+
+	public SocialRelationLocalService getWrappedService() {
+		return _socialRelationLocalService;
+	}
+
+	public void setWrappedService(
 		SocialRelationLocalService socialRelationLocalService) {
 		_socialRelationLocalService = socialRelationLocalService;
 	}

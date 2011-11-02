@@ -23,7 +23,8 @@ package com.liferay.portal.service;
  * @see       TeamLocalService
  * @generated
  */
-public class TeamLocalServiceWrapper implements TeamLocalService {
+public class TeamLocalServiceWrapper implements TeamLocalService,
+	ServiceWrapper<TeamLocalService> {
 	public TeamLocalServiceWrapper(TeamLocalService teamLocalService) {
 		_teamLocalService = teamLocalService;
 	}
@@ -146,6 +147,11 @@ public class TeamLocalServiceWrapper implements TeamLocalService {
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _teamLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	public com.liferay.portal.model.Team fetchTeam(long teamId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _teamLocalService.fetchTeam(teamId);
 	}
 
 	/**
@@ -307,11 +313,25 @@ public class TeamLocalServiceWrapper implements TeamLocalService {
 		return _teamLocalService.updateTeam(teamId, name, description);
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #getWrappedService}
+	 */
 	public TeamLocalService getWrappedTeamLocalService() {
 		return _teamLocalService;
 	}
 
+	/**
+	 * @deprecated Renamed to {@link #setWrappedService}
+	 */
 	public void setWrappedTeamLocalService(TeamLocalService teamLocalService) {
+		_teamLocalService = teamLocalService;
+	}
+
+	public TeamLocalService getWrappedService() {
+		return _teamLocalService;
+	}
+
+	public void setWrappedService(TeamLocalService teamLocalService) {
 		_teamLocalService = teamLocalService;
 	}
 
